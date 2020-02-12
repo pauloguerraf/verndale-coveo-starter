@@ -2,7 +2,7 @@
   "name": "@verndale/toolkit",
   "description": "Front end build system.",
   "license": "MIT",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "engines": {
     "npm": "~6.x.x"
   },
