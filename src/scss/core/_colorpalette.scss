@@ -1,0 +1,27 @@
+/* Color map */
+//-- Usage: color("white");
+
+$colors: (
+  //-- Black and white
+  "white": #FFF,
+  "black": #000,
+
+  //-- Site specific
+
+  //-- Social media
+  "twitter": #55ACEE,
+  "instagram": #125688,
+  "facebook": #3B5998,
+  "pinterest": #CB2027,
+  "youtube": #B00,
+  "googleplus": #DD4B39
+);
+
+@function color($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
