@@ -1,4 +1,3 @@
-import { resolve } from 'path';
 import config from './config';
 import { entry, output, plugins, rules } from './webpack';
 
