@@ -2,7 +2,7 @@
   "name": "@verndale/toolkit",
   "description": "Front end build system.",
   "license": "MIT",
-  "version": "2.2.1",
+  "version": "3.0.0",
   "author": {
     "name": "Verndale",
     "email": "hello@verndale.com"
