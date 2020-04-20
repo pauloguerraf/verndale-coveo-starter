@@ -27,6 +27,7 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "@verndale/color-palette": "0.1.0",
     "normalize.css": "8.0.1"
   },
   "devDependencies": {

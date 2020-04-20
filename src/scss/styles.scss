@@ -2,7 +2,11 @@
 
 //Core
 @import
-"../../node_modules/normalize.css/normalize";
+"../../node_modules/normalize.css/normalize",
+"core/colorpalette",
+"../../node_modules/@verndale/color-palette/colors",
+"core/variables",
+"core/variables";
 
 //Components
 @import "components/**/*";
