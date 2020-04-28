@@ -13,6 +13,7 @@
 Download/install these tools/packages in order to run the toolkit locally.
 
 - [Node][node-url] - `~12.x.x`
+- [Yarn][yarn-url] - `~1.x.x`
 
 ### Install requirements
 
@@ -24,13 +25,18 @@ Installing Node will also install the Node Package Manager ([npm][npm-url])
 - Download the most current node which has the latest features
 - Follow on screen instructions to complete installation
 
-To make sure Node and npm installed properly, launch your terminal or command line and type:
+To make sure Node is installed properly, launch your terminal or command line and type:
 
 ```sh
 node --version
 ```
 
-_You should see a version number such as this: `v12.13.0`_
+#### Install Yarn
+
+- Follow instructions [here][yarn-url]
+- After installation, you should be able to run yarn on the command line
+
+To make sure Yarn installed properly, launch your terminal or command line and type:
 
 ```sh
 yarn --version
@@ -117,6 +123,7 @@ The component source code can be found under the following:
 - JS - `src/js/components`
 
 [node-url]: https://nodejs.org/en/
+[yarn-url]: https://classic.yarnpkg.com/en/docs/install/#mac-stable
 [npm-url]: https://www.npmjs.com/
 [verndale-logo]: src/images/logo-verndale.png?raw=true "Verndale"
 [npm-image]: https://img.shields.io/npm/v/npm.svg
