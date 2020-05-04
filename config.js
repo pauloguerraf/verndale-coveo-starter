@@ -22,7 +22,8 @@ export default {
       images: 'images',
       fonts: 'fonts',
       htmlTemplates: 'templates',
-      htmlModules: 'modules'
+      htmlModules: 'modules',
+      htmlComonents: 'components',
     },
 
     //Asset paths
@@ -49,7 +50,11 @@ export default {
         //modules
         srcModules: `${this.source}/${this.html}/${this.assets.htmlModules}`,
         devModules: `${this.development}/${this.html}/${this.assets.htmlModules}`,
-        distModules: `${this.production}/${this.html}/${this.assets.htmlModules}`
+        distModules: `${this.production}/${this.html}/${this.assets.htmlModules}`,
+        //Components
+        srcComponents: `${this.source}/${this.html}/${this.assets.htmlComonents}`,
+        devComponents: `${this.development}/${this.html}/${this.assets.htmlComonents}`,
+        distComponents: `${this.production}/${this.html}/${this.assets.htmlComonents}`
       }
     }
   }

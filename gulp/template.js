@@ -32,12 +32,12 @@ Templating
 
           let cleanFile = '';
 
-          if (!/^(.*\.(?!(html)$))?[^.]*$/i.test(fileName)) {
+          if (!/^(.*\.(?!(hbs)$))?[^.]*$/i.test(fileName)) {
             cleanFile = fileName.replace(/(.*)\.(.*?)$/, '$1');
           } else {
             reject(
               colors.red.bold(
-                'TEMPLATE ERROR - Make sure all files in the templates directory are .html files'
+                'TEMPLATE ERROR - Make sure all files in the templates directory are .hbs files'
               )
             );
           }

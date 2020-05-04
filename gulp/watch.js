@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import { log, colors } from 'gulp-util';
 import config from '../config';
-import fileInclude from './file-include';
+import compileHandlebars from './compile-handlebars'
 import template from './template';
 import { copy } from './copy';
 import svgstore from './svgstore';
@@ -21,9 +21,9 @@ Watch
 
   //html
   gulp.watch(
-    [`${dir.source}/**/*.html`, `!${dir.source}/index.html`],
+    [`${dir.source}/**/*.hbs`],
     { cwd: './' },
-    gulp.series(fileInclude, template)
+    gulp.series(compileHandlebars, template)
   );
   gulp.watch(`${dir.source}/index.html`, { cwd: './' }, template);
 

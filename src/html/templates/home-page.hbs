@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  @@include("modules/global/head.html", {
-    "title": "Home page"
-  })
+  {{>head title='Home page'}}
 </head>
 <body>
-  <!-- Header -->
-  @@include("modules/global/header.html")
+  {{>header}}
 
   <section role="main">
     <h1>Home page</h1>
 
-    @@include("components/button.html", {
-      "title": "button text",
-      "classes": "btn btn--primary"
-    })
+    {{>button title="Button text" classes="btn btn--primary"}}
+    {{>list data='{"items": ["item 1", "item 2"]}' }}
 
     <div>
       <svg>
@@ -29,6 +24,6 @@
   </div>
 
   <!-- Footer -->
-  @@include("modules/global/footer.html")
+  {{>footer}}
 </body>
 </html>

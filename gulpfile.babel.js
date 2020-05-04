@@ -13,6 +13,7 @@ import template from './gulp/template';
 import server from './gulp/server';
 import watch from './gulp/watch';
 import eslint from './gulp/eslint';
+import compileHandlebars from './gulp/compile-handlebars'
 
 const { NODE_ENV } = process.env;
 
@@ -22,7 +23,8 @@ let main = gulp.series(
   scssLint,
   sass,
   svgstore,
-  gulp.parallel(copy, fileInclude),
+  copy,
+  compileHandlebars,
   template,
   server,
   cb => {
@@ -46,7 +48,7 @@ if (NODE_ENV === 'production') {
     sass,
     svgstore,
     imagemin,
-    fileInclude,
+    compileHandlebars,
     gulp.parallel(copy, cleanCss),
     cb => {
       log(colors.green.bold('FINISHED GULP PRODUCTION BUILD'));
