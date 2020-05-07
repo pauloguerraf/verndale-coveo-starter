@@ -5,9 +5,7 @@ import handlebars from 'handlebars';
 import gulpHandlebarsHtml from 'gulp-handlebars-html';
 import replace from 'gulp-replace';
 import regexRename from 'gulp-regex-rename';
-import notifier from 'node-notifier';
 import merge from 'merge-stream';
-import gulpFileInclude from 'gulp-file-include';
 import gulpIf from 'gulp-if';
 import browserSync from 'browser-sync';
 import { log, colors } from 'gulp-util';
@@ -35,10 +33,6 @@ HTML handlebars
 --------------------------------------------------------------`)
   );
 
-  const outModules =
-    NODE_ENV === 'production'
-      ? `./${dir.paths.distModules}`
-      : `./${dir.paths.devModules}`;
   const outPages =
     NODE_ENV === 'production'
       ? `./${dir.paths.distTemplates}`
