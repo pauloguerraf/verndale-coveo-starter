@@ -5,7 +5,6 @@ import clean from './gulp/clean';
 import sass from './gulp/sass';
 import scssLint from './gulp/scss-lint';
 import imagemin from './gulp/imagemin';
-import fileInclude from './gulp/file-include';
 import { copy, copyPreviewServer } from './gulp/copy';
 import cleanCss from './gulp/clean-css';
 import svgstore from './gulp/svgstore';
