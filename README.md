@@ -74,12 +74,11 @@ Running this command will compile, by default, a `development` build and launch 
 
 ## Builds
 
-When working in the development environment, you will use the `npm start` task to view up-to-date changes while you work.
+When working in the development environment, you will use the `yarn start` task to view up-to-date changes while you work.
 
 For individual tasks, the following can be used:
 
 - Compile landing page template - `gulp template`
-- Compile HTML modules and templates - `gulp file-include`
 - Compile and lint SCSS - `gulp sass`
 - Compile JavaScript documentation - `yarn docs`
 - Lint JavaScript files - `yarn js-lint`

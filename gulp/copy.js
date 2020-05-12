@@ -20,7 +20,9 @@ Copying global files
       ? `./${dir.paths.distFonts}`
       : `./${dir.paths.devFonts}`;
 
-  let fonts, images;
+  const outModules = `./${dir.paths.distModules}`;
+
+  let fonts, images, modules;
 
   //fonts
   fonts = gulp
@@ -41,12 +43,19 @@ Copying global files
     return mergeStream(fonts, images);
   }
 
+  modules = gulp
+    .src([
+      `./${dir.paths.srcModules}/**/*.*`,
+    ])
+    .pipe(gulp.dest(outModules))
+    .pipe(filelog('copy:modules'));
+
   images = gulp
     .src([`./${dir.paths.srcImages}/svgsheet.svg`])
     .pipe(gulp.dest(`./${dir.paths.distImages}/`))
     .pipe(filelog('copy:svgsheet.svg'));
 
-  return mergeStream(fonts, images);
+  return mergeStream(fonts, images, modules);
 }
 
 function copyPreviewServer(){
