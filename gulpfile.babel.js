@@ -7,6 +7,7 @@ import scssLint from './gulp/scss-lint';
 import imagemin from './gulp/imagemin';
 import { copy, copyPreviewServer } from './gulp/copy';
 import cleanCss from './gulp/clean-css';
+import criticalCss from './gulp/critical-css';
 import svgstore from './gulp/svgstore';
 import template from './gulp/template';
 import server from './gulp/server';
@@ -49,6 +50,7 @@ if (NODE_ENV === 'production') {
     imagemin,
     compileHandlebars,
     gulp.parallel(copy, cleanCss),
+    criticalCss,
     cb => {
       log(colors.green.bold('FINISHED GULP PRODUCTION BUILD'));
 
