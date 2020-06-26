@@ -42,6 +42,7 @@
     "browser-sync": "2.26.7",
     "check-dependencies": "1.1.0",
     "core-js": "3.6.5",
+    "critical": "2.0.1",
     "cross-env": "7.0.2",
     "del": "5.1.0",
     "eslint": "7.0.0",
