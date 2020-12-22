@@ -78,7 +78,7 @@
     "lodash": "4.17.15",
     "merge-stream": "2.0.0",
     "minimist": "1.2.5",
-    "node-notifier": "7.0.1",
+    "node-notifier": "8.0.1",
     "proxy-middleware": "0.15.0",
     "regenerator-runtime": "0.13.5",
     "uglify-js": "3.10.0",
