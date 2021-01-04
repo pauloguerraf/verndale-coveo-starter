@@ -19,6 +19,7 @@ export default {
       javascript: 'js',
       css: 'css',
       scss: 'scss',
+      statics: 'static',
       images: 'images',
       fonts: 'fonts',
       htmlTemplates: 'templates',
@@ -32,11 +33,11 @@ export default {
         //js
         srcJS: `${this.source}/${this.assets.javascript}`,
         //fonts
-        srcFonts: `${this.source}/${this.assets.fonts}`,
+        srcFonts: `${this.source}/${this.assets.statics}/${this.assets.fonts}`,
         devFonts: `${this.development}/${this.assets.fonts}`,
         distFonts: `${this.production}/${this.assets.fonts}`,
         //images
-        srcImages: `${this.source}/${this.assets.images}`,
+        srcImages: `${this.source}/${this.assets.statics}/${this.assets.images}`,
         devImages: `${this.development}/${this.assets.images}`,
         distImages: `${this.production}/${this.assets.images}`,
         //styles

@@ -1,0 +1,19 @@
+export const build = (template, args, layout = 'fullscreen') => {
+  const Template = (args => template(args)).bind({});
+
+  Template.args = args;
+
+  Template.parameters = {
+    layout,
+    docs: {
+      source: {
+        code: template(args)
+          .replace(/\uFEFF/gi, '')
+          .replace(/^\s*\n/gm, '')
+      }
+    },
+    actions: { disable: true }
+  };
+
+  return Template;
+};

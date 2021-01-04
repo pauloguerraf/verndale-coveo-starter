@@ -5,7 +5,7 @@ import clean from './gulp/clean';
 import sass from './gulp/sass';
 import scssLint from './gulp/scss-lint';
 import imagemin from './gulp/imagemin';
-import { copy, copyPreviewServer } from './gulp/copy';
+import copy from './gulp/copy';
 import cleanCss from './gulp/clean-css';
 import criticalCss from './gulp/critical-css';
 import svgstore from './gulp/svgstore';
@@ -64,17 +64,5 @@ if (NODE_ENV === 'production') {
   );
 }
 
-// Preview server
-const previewServer = gulp.series(
-  template,
-  copyPreviewServer,
-  cb => {
-    log(colors.green.bold('FINISHED COPYING FILES FOR SERVER'));
-
-    cb();
-  }
-);
-
 // Tasks
 gulp.task('default', main);
-gulp.task('create-server', previewServer);
