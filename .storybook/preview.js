@@ -19,19 +19,6 @@ addDecorator(storyFn => {
       document.body.insertBefore( div, document.body.childNodes[0]);
   }
 
-  setTimeout(()=> create(modules)); //requestanimationframe
+  setTimeout(() => create(modules));
   return storyFn();
-});
-
-// get an instance to the communication channel for the manager and preview
-const channel = addons.getChannel();
-
-// switch body class for story along with interface theme
-channel.on('DARK_MODE', isDark => {
-  console.log(isDark)
-  if (isDark) {
-    document.body.classList.add('body--dark');
-  } else {
-    document.body.classList.remove('body--dark');
-  }
 });
