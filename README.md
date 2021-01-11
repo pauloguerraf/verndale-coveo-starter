@@ -72,6 +72,17 @@ Running this command will compile, by default, a `development` build and launch 
 
 ---
 
+## Components library
+
+The toolkit uses [storybook](https://storybook.js.org/) to deliver all components (and modules) within an interactive UI. Developers should write one or multiple stories per component that describe all the states a component can support.
+
+To start storybook run the following at the root of the project:
+
+```sh
+yarn storybook
+```
+---
+
 ## Builds
 
 When working in the development environment, you will use the `yarn start` task to view up-to-date changes while you work.
@@ -120,6 +131,14 @@ The component source code can be found under the following:
 - HTML - `src/html/components`
 - SCSS - `src/scss/components`
 - JS - `src/js/components`
+
+### Stories source code
+
+The stories source code can be found under the following:
+
+- Components - `src/stories/components`
+- Modules - `src/stories/modules`
+- Templates - `src/stories/templates`
 
 [node-url]: https://nodejs.org/en/
 [yarn-url]: https://classic.yarnpkg.com/en/docs/install/#mac-stable

@@ -1,7 +1,3 @@
-{{#unless classes}}
-  <button>{{title}}</button>
-{{/unless}}
-
-{{#if classes}}
-  <button class={{classes}}>{{title}}</button>
-{{/if}}
+<button{{#if classes}} class="{{classes}}"{{/if}}>
+  {{title}}
+</button>

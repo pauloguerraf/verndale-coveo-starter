@@ -58,35 +58,4 @@ Copying global files
   return mergeStream(fonts, images, modules);
 }
 
-function copyPreviewServer(){
-  log(
-    colors.green.bold(`
---------------------------------------------------------------
-Copying files for preview server
---------------------------------------------------------------`)
-  );
-
-  const files = gulp
-    .src([
-      `./${dir.production}/**/*.*`,
-      `!./${dir.production}/html/**/*.html`,
-      `!./${dir.production}/css/**/*.css`
-    ])
-    .pipe(gulp.dest(`./tools/server/`))
-    .pipe(filelog('copy:files'));
-
-  const html = gulp.src('./dist/html/**/*.html')
-    .pipe(gulp.dest('./tools/server/html/'))
-    .pipe(filelog('copy:html'));
-
-  const css = gulp.src('./dist/css/*.css')
-    .pipe(gulp.dest('./tools/server/css/'))
-    .pipe(filelog('copy:css'));
-
-  return mergeStream(files, html, css);
-}
-
-export {
-  copy,
-  copyPreviewServer
-};
+export default copy;
