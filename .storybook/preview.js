@@ -1,4 +1,3 @@
-import { addons } from '@storybook/addons';
 import { addDecorator } from '@storybook/html';
 import create from '@verndale/core';
 import modules from '../src/js/modules';

@@ -4,6 +4,10 @@
 
 module.exports = {
   parser: 'babel-eslint',
+  env: {
+    browser: true,
+    node: true
+  },
   rules: {
     ///////
     // BEST PRACTICES
@@ -200,25 +204,6 @@ module.exports = {
   // Allow specific global variables and methods:
   ///////
   globals: {
-    'alert': true,
-    'console': true,
-    'require': true,
-    'window': true,
-    'await': true,
-    'async': true,
-    'process': true,
-    'WeakMap': true,
-    '__DEV__': true,
-    'document': true,
-    'navigator': true,
-    'location': true,
-    'jQuery': true,
-    '$': true,
-    'module': true,
-    'setTimeout': true,
-    'clearTimeout': true,
-    'Promise': true,
-    'Map': true,
-    'Set': true
+    story: true
   }
 };

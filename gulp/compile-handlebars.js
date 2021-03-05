@@ -9,19 +9,20 @@ import merge from 'merge-stream';
 import gulpIf from 'gulp-if';
 import browserSync from 'browser-sync';
 import { log, colors } from 'gulp-util';
-import config from '../config';
+import { dir } from '../config';
 
 const { NODE_ENV } = process.env;
-const { dir } = config;
 const gulpHandlebars = gulpHandlebarsHtml(handlebars);
 
-handlebars.registerHelper("json", (context, options) => {
-  try {
-    return options.fn(JSON.parse(context));
-  } catch {
-    log(colors.red.bold(`
-      Undefined or Invalid JSON in the partial context
-    `))
+const helpersDir = path.resolve(dir.hbsHelpers);
+const helpers = fs.readdirSync(helpersDir);
+
+helpers.forEach(helper => {
+  const ext = path.extname(helper);
+
+  if (ext === '.js') {
+    const name = path.basename(helper, ext);
+    handlebars.registerHelper(name, require(`${helpersDir}/${helper}`));
   }
 });
 
@@ -46,7 +47,7 @@ HTML handlebars
       fs.readdir(directory, (err, modules) => {
         if (err) reject(err);
 
-        for(let i = 0; i < modules.length; i++) {
+        for (let i = 0; i < modules.length; i++) {
           const isFile = !!path.extname(directory + modules[i]);
 
           if (!isFile) files.push(directory + modules[i]);
@@ -61,18 +62,23 @@ HTML handlebars
 
   return readModules().then(() => {
     const options = {
-      partialsDirectory: [`./${dir.paths.srcModules}/`, `./${dir.paths.srcComponents}/`, ...files]
+      partialsDirectory: [
+        `./${dir.paths.srcModules}/`,
+        `./${dir.paths.srcComponents}/`,
+        ...files
+      ]
     };
 
-    const compile = gulp.src(`./${dir.source}/html/templates/*.hbs`)
-                .pipe(gulpHandlebars({}, options))
-                .pipe(regexRename(/\.hbs$/, ".html"))
-                .pipe(replace(/\uFEFF/ig, "")) //cut out zero width nbsp characters the compiler adds in
-                .pipe(gulp.dest(outPages))
-                .pipe(gulpIf(NODE_ENV !== 'production', browserSync.stream()));
+    const compile = gulp
+      .src(`./${dir.source}/html/templates/*.hbs`)
+      .pipe(gulpHandlebars({}, options))
+      .pipe(regexRename(/\.hbs$/, '.html'))
+      .pipe(replace(/\uFEFF/gi, '')) //cut out zero width nbsp characters the compiler adds in
+      .pipe(gulp.dest(outPages))
+      .pipe(gulpIf(NODE_ENV !== 'production', browserSync.stream()));
 
     return merge(compile);
-  })
+  });
 }
 
 export default compileHandlebars;

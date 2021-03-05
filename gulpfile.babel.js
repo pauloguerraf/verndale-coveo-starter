@@ -13,7 +13,8 @@ import template from './gulp/template';
 import server from './gulp/server';
 import watch from './gulp/watch';
 import eslint from './gulp/eslint';
-import compileHandlebars from './gulp/compile-handlebars'
+import compileHandlebars from './gulp/compile-handlebars';
+import { enableCriticalCss } from './config';
 
 const { NODE_ENV } = process.env;
 
@@ -50,7 +51,7 @@ if (NODE_ENV === 'production') {
     imagemin,
     compileHandlebars,
     gulp.parallel(copy, cleanCss),
-    criticalCss,
+    enableCriticalCss ? criticalCss : cb => cb(),
     cb => {
       log(colors.green.bold('FINISHED GULP PRODUCTION BUILD'));
 
