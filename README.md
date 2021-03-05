@@ -4,7 +4,7 @@
 
 > Front end toolkit used to package and compile projects at Verndale
 
-![Verndale | verndale.com](src/images/logo-verndale.png "Verndale")
+![Verndale | verndale.com](src/static/images/logo-verndale.png 'Verndale')
 
 ## Getting Started
 
@@ -81,6 +81,7 @@ To start storybook run the following at the root of the project:
 ```sh
 yarn storybook
 ```
+
 ---
 
 ## Builds
@@ -143,5 +144,5 @@ The stories source code can be found under the following:
 [node-url]: https://nodejs.org/en/
 [yarn-url]: https://classic.yarnpkg.com/en/docs/install/#mac-stable
 [npm-url]: https://www.npmjs.com/
-[verndale-logo]: src/images/logo-verndale.png?raw=true "Verndale"
+[verndale-logo]: src/images/logo-verndale.png?raw=true 'Verndale'
 [npm-image]: https://img.shields.io/npm/v/npm.svg
