@@ -4,6 +4,7 @@ const validFileName = require('valid-filename');
 const config = require('../../config');
 const prompt = require('prompt-sync')({sigint: true});
 const utils = require('./utils');
+const { exec } = require('child_process');
 
 const copyHTML = (dest) => {
   const src = './.scaffold/templates/page.hbs';
@@ -25,7 +26,10 @@ const createPage = name => {
     files: [destHtml, destStory],
     from: ['{{name}}', '{{NameTitleCase}}'],
     to: [name, utils.fileNameToTitleCase(name)],
-    cb: () => console.log(chalk.green(`${name} created successfully!`))
+    cb: () => {
+      console.log(chalk.green(`${name} created successfully!`))
+      exec(`code -g ${destHtml}:10:5`);
+    }
   });
 }
 

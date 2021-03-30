@@ -24,7 +24,9 @@
     "build": "yarn js-lint && cross-env NODE_ENV=production gulp && webpack -p --env.production --progress && yarn build-storybook",
     "storybook": "start-storybook -p 6006 -s src/static/",
     "build-storybook": "build-storybook -o ./tools/component-library/ -s src/static/ --no-dll",
-    "page": "node ./.scaffold/index page"
+    "page": "node ./.scaffold/index page",
+    "module": "node ./.scaffold/index module",
+    "js": "node ./.scaffold/index js"
   },
   "browserslist": [
     "last 2 versions"

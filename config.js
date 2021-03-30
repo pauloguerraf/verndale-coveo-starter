@@ -62,6 +62,7 @@ module.exports = {
         srcModules: `${this.source}/${this.html}/${this.assets.htmlModules}`,
         devModules: `${this.development}/${this.html}/${this.assets.htmlModules}`,
         distModules: `${this.production}/${this.html}/${this.assets.htmlModules}`,
+        storyModules: `${this.stories}/${this.assets.htmlModules}`,
         //components
         srcComponents: `${this.source}/${this.html}/${this.assets.htmlComonents}`,
         devComponents: `${this.development}/${this.html}/${this.assets.htmlComonents}`,
