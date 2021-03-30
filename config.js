@@ -57,6 +57,7 @@ module.exports = {
         srcTemplates: `${this.source}/${this.html}/${this.assets.htmlTemplates}`,
         devTemplates: `${this.development}/${this.html}/${this.assets.htmlTemplates}`,
         distTemplates: `${this.production}/${this.html}/${this.assets.htmlTemplates}`,
+        storyTemplates: `${this.stories}/${this.assets.htmlTemplates}`,
         //modules
         srcModules: `${this.source}/${this.html}/${this.assets.htmlModules}`,
         devModules: `${this.development}/${this.html}/${this.assets.htmlModules}`,
