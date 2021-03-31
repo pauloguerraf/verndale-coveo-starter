@@ -34,7 +34,7 @@ const createModule = (name, shouldCreateJs) => {
 
   if (shouldCreateJs) createJs([], name);
 
-  const dataJs = shouldCreateJs ? ` data-module=${name}` : '';
+  const dataJs = shouldCreateJs ? ` data-module="${name}"` : '';
 
   utils.replaceStrings({
     files,
