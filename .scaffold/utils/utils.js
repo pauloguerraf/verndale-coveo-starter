@@ -1,5 +1,6 @@
 const fs = require('fs-extra');
 const replace = require('replace-in-file');
+const config = require('../../config');
 
 const fileNameToTitleCase = str => {
   let output = str.split("-");
@@ -28,19 +29,16 @@ const replaceStrings = async (config) => {
   }
 }
 
-const setupReact = () => {
-  const babel = '.babelrc';
-  fs.readFile(babel, 'utf8', function(err, data) {
-    if (err) throw new Error(err);
-    let d = JSON.parse(data);
+const updateModules = (obj) => {
+  const modulesFile = `./${config.dir.paths.srcJS}/scaffolded-modules.json`;
+  fs.readFile(modulesFile, 'utf8', function(err, data) {
+    if (err) throw err;
+    const d = JSON.parse(data);
+    d.push(obj);
 
-    console.log(d);
+    const stream = fs.createWriteStream(modulesFile);
 
-    d.presets.push("@babel/preset-react");
-
-    const stream = fs.createWriteStream(babel);
-
-    stream.once('open', function(fd) {
+    stream.once('open', function() {
       stream.write(JSON.stringify(d, null, 2));
       stream.end();
     });
@@ -51,5 +49,5 @@ module.exports = {
   fileNameToTitleCase,
   fileNamtToPasCalCase,
   replaceStrings,
-  setupReact
+  updateModules
 }

@@ -12,26 +12,6 @@ const copyJs = (dest) => {
   fs.copyFileSync(src, dest, fs.constants.COPYFILE_EXCL);
 }
 
-const updateModules = name => {
-  const modulesFile = `./${config.dir.paths.srcJS}/scaffolded-modules.json`;
-  fs.readFile(modulesFile, 'utf8', function(err, data) {
-    if (err) throw err;
-    let d = JSON.parse(data);
-
-    d.push({
-      name,
-      url: `./modules/${name}`
-    });
-
-    const stream = fs.createWriteStream(modulesFile);
-
-    stream.once('open', function(fd) {
-      stream.write(JSON.stringify(d, null, 2));
-      stream.end();
-    });
-  });
-}
-
 const createJs = (name, noCb = false) => {
   const destJs = `./${config.dir.paths.srcJS}/modules/${name}.js`;
 
@@ -46,7 +26,10 @@ const createJs = (name, noCb = false) => {
       : () => console.log(chalk.green(`${name} created successfully!`))
   });
 
-  updateModules(name);
+  utils.updateModules({
+    name,
+    url: `./modules/${name}`
+  });
 }
 
 module.exports = function(args, name) {

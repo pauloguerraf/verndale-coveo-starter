@@ -1,13 +1,9 @@
-const fs = require('fs');
 const createPage = require('./utils/page');
 const createModule = require('./utils/module');
 const createJs = require('./utils/js');
-const utils = require('./utils/utils');
+const createReact = require('./utils/react');
 
 const action = process.argv[2];
-utils.setupReact();
-return;
-
 
 switch (action) {
   case 'page':
@@ -20,6 +16,10 @@ switch (action) {
 
   case 'js':
     createJs(process.argv);
+    break;
+
+  case 'react':
+    createReact(process.argv);
     break;
 
   default:

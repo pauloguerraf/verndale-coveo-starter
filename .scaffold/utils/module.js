@@ -71,7 +71,7 @@ module.exports = function(args) {
         isReact = isReact.toLowerCase();
         isReact = isReact !== 'n' && isReact !== 'no';
 
-        if (isReact) return createReact({}, name, true);
+        if (isReact) return createReact({}, name);
       }
 
       createModule(name, false);

@@ -26,7 +26,8 @@
     "build-storybook": "build-storybook -o ./tools/component-library/ -s src/static/ --no-dll",
     "page": "node ./.scaffold/index page",
     "module": "node ./.scaffold/index module",
-    "js": "node ./.scaffold/index js"
+    "js": "node ./.scaffold/index js",
+    "react": "node ./.scaffold/index react"
   },
   "browserslist": [
     "last 2 versions"
