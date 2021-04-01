@@ -2,8 +2,12 @@ const fs = require('fs');
 const createPage = require('./utils/page');
 const createModule = require('./utils/module');
 const createJs = require('./utils/js');
+const utils = require('./utils/utils');
 
 const action = process.argv[2];
+utils.setupReact();
+return;
+
 
 switch (action) {
   case 'page':

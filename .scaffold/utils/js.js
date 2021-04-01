@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const chalk = require('chalk');
 const validFileName = require('valid-filename');
 const config = require('../../config');

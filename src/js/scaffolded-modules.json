@@ -1,1 +1,6 @@
-[]
+[
+  {
+    "name": "banner",
+    "url": "./modules/banner"
+  }
+]
