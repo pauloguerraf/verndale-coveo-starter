@@ -62,6 +62,11 @@ const createReact = (name) => {
     execSync('yarn add @babel/preset-react -D', { stdio : 'pipe' });
     execSync('yarn add react react-dom', { stdio : 'pipe' });
     console.log(chalk.green('You can now create React modules!'));
+    exec('yarn start', { stdio : 'pipe' });
+
+    const dirJs = config.dir.paths.srcJS;
+    exec(`code -g ${dirJs}/hooks/use${utils.fileNamtToPasCalCase}.js`);
+    exec(`code -g ${dirJs}/${utils.fileNamtToPasCalCase}.js`);
   } catch(e) {
     console.log(chalk.red(`ERROR: ${e.stderr}. Dependencies wre not properly installed. Try installing them manually`));
   }
