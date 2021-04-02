@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const config = require('../../config');
 const utils = require('./utils');
 const { execSync } = require("child_process");
+const package = require('../../package.json');
 
 const copyReact = name => {
   const folder = './.scaffold/templates/react';
@@ -43,9 +44,7 @@ const updateBabelToSupportReact = () => {
 const createReact = (name) => {
   copyReact(name);
 
-  try {
-    require.resolve('react');
-  } catch {
+  if (!package.dependencies.react) {
     console.log(chalk.yellow('Adding support for React'));
 
     updateBabelToSupportReact();

@@ -108,7 +108,7 @@ const globModules = [
       render: function(...args) {
         const React = require('react');
         const { render } = require('react-dom');
-        args[1].forEach(node => render(<React.Component {...node.dataset} />, node));
+        args[1].forEach(node => render(React.createElement(React.Component, node.dataset), node));
       }
     ` : ''}
   }`).join(',\n')}
