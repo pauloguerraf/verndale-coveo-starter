@@ -7,6 +7,7 @@ const { execSync } = require("child_process");
 const copyReact = name => {
   const folder = './.scaffold/templates/react';
   const destFolder = `./${config.dir.paths.srcJS}/modules/${name}`;
+  const modulesFile = `./${config.dir.paths.srcJS}/modules/modules.js`;
   const files = [`${destFolder}/**`];
 
   fs.copySync(folder, destFolder);
@@ -17,6 +18,19 @@ const copyReact = name => {
     files,
     from: [/{{name}}/g, /{{NameTitleCase}}/g, /{{namePascalCase}}/g],
     to: [name, utils.fileNameToTitleCase(name), utils.fileNamtToPasCalCase(name)],
+    cb: () => {}
+  });
+
+  utils.replaceStrings({
+    files: modulesFile,
+    from: [
+      "// import renderReactMoule from './render-react-module';",
+      "// Render react moudule placeholder"
+    ],
+    to: [
+      "import React from 'react';",
+      "if (module.isReact) config.render = renderReactModule;"
+    ],
     cb: () => {}
   });
 }

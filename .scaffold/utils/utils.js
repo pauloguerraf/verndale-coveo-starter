@@ -77,15 +77,50 @@ const createFile = (type, cb) => {
 
 const updateModules = (obj) => {
   const modulesFile = `./${config.dir.paths.srcJS}/scaffolded-modules.json`;
+  const globsFile = `./${config.dir.paths.srcJS}/glob-modules.js`;
+  let modules = [];
+
   fs.readFile(modulesFile, 'utf8', function(err, data) {
     if (err) throw err;
-    const d = JSON.parse(data);
-    d.push(obj);
+    modules = JSON.parse(data);
+    modules.push(obj);
+    console.log(modules);
 
     const stream = fs.createWriteStream(modulesFile);
 
     stream.once('open', function() {
-      stream.write(JSON.stringify(d, null, 2));
+      stream.write(JSON.stringify(modules, null, 2));
+      stream.end();
+    });
+  });
+
+  fs.readFile(globsFile, 'utf8', function(err) {
+    if (err) throw err;
+
+    const stream = fs.createWriteStream(globsFile);
+
+    console.log(modules)
+
+    const data = `
+      const globModules = [
+        ${modules.map(j => `{
+          name: '${j.name}',
+          loader: () => import('${j.url}'),
+          ${j.isReact ? `
+            render: function(...args) {
+              const React = require('react');
+              const { render } = require('react-dom');
+              args[1].forEach(node => render(<React.Component {...node.dataset} />, node));
+            }
+          ` : ''}
+        }`).join(',\n')}
+      ];
+
+      export default globModules;
+    `;
+
+    stream.once('open', function() {
+      stream.write(data);
       stream.end();
     });
   });
