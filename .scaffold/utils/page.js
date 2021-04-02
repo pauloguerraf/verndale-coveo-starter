@@ -1,8 +1,6 @@
 const fs = require('fs');
 const chalk = require('chalk');
-const validFileName = require('valid-filename');
 const config = require('../../config');
-const prompt = require('prompt-sync')({sigint: true});
 const utils = require('./utils');
 const { exec } = require('child_process');
 
@@ -34,20 +32,5 @@ const createPage = name => {
 }
 
 module.exports = function(args) {
-  let validName = false;
-
-  while (!validName) {
-    let name = prompt('File Name?: ');
-    const isValid = !name.includes('.') && !name.includes(' ') && validFileName(name);
-    const fileExists = fs.existsSync(`${config.dir.paths.srcTemplates}/${name}.hbs`)
-
-    if (!isValid) {
-      console.log(chalk.red(`Enter a ${chalk.bold('valid')} file name ${chalk.bold('without')} extension`));
-    } else if (fileExists) {
-      console.log(chalk.red('Page already exists, try again'));
-    } else {
-      createPage(name);
-      validName = true;
-    }
-  }
+  utils.createFile(createPage);
 }

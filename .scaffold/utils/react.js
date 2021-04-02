@@ -74,21 +74,5 @@ const createReact = (name) => {
 
 module.exports = function(args, name) {
   if (name) return createReact(name);
-
-  let validName = false;
-
-  while (!validName) {
-    let name = prompt('File Name?: ');
-    const isValid = !name.includes('.') && !name.includes(' ') && validFileName(name);
-    const fileExists = fs.existsSync(`${config.dir.paths.srcModules}/${name}.hbs`);
-
-    if (!isValid) {
-      console.log(chalk.red(`Enter a ${chalk.bold('valid')} file name ${chalk.bold('without')} extension`));
-    } else if (fileExists) {
-      console.log(chalk.red('JS file already exists, try again'));
-    } else {
-      createReact(name);
-      validName = true;
-    }
-  }
+  utils.createFile(createReact);
 }

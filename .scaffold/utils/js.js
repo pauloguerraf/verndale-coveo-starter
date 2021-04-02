@@ -1,8 +1,6 @@
 const fs = require('fs-extra');
 const chalk = require('chalk');
-const validFileName = require('valid-filename');
 const config = require('../../config');
-const prompt = require('prompt-sync')({sigint: true});
 const utils = require('./utils');
 
 const copyJs = (dest) => {
@@ -34,21 +32,5 @@ const createJs = (name, noCb = false) => {
 
 module.exports = function(args, name) {
   if (name) return createJs(name, true);
-
-  let validName = false;
-
-  while (!validName) {
-    let name = prompt('File Name?: ');
-    const isValid = !name.includes('.') && !name.includes(' ') && validFileName(name);
-    const fileExists = fs.existsSync(`${config.dir.paths.srcModules}/${name}.hbs`);
-
-    if (!isValid) {
-      console.log(chalk.red(`Enter a ${chalk.bold('valid')} file name ${chalk.bold('without')} extension`));
-    } else if (fileExists) {
-      console.log(chalk.red('JS file already exists, try again'));
-    } else {
-      createJs(name);
-      validName = true;
-    }
-  }
+  utils.createFile(createJs);
 }

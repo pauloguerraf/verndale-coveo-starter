@@ -7,6 +7,7 @@ const utils = require('./utils');
 const createJs = require('./js');
 const createReact = require('./react');
 const { exec } = require("child_process");
+const { util } = require('webpack');
 
 const copyHTML = (dest) => {
   const src = './.scaffold/templates/module.hbs';
@@ -50,32 +51,19 @@ const createModule = (name, shouldCreateJs) => {
 }
 
 module.exports = function(args) {
-  let validName = false;
+  utils.createFile(name => {
+    let hasJs = prompt('JS (y/n)?: ');
+    hasJs = hasJs.toLowerCase();
+    hasJs = hasJs !== 'n' && hasJs !== 'no';
 
-  while (!validName) {
-    let name = prompt('File Name?: ');
-    const isValid = !name.includes('.') && !name.includes(' ') && validFileName(name);
-    const fileExists = fs.existsSync(`${config.dir.paths.srcModules}/${name}.hbs`);
+    if (hasJs) {
+      let isReact = prompt('React (y/n) ?: ');
+      isReact = isReact.toLowerCase();
+      isReact = isReact !== 'n' && isReact !== 'no';
 
-    if (!isValid) {
-      console.log(chalk.red(`Enter a ${chalk.bold('valid')} file name ${chalk.bold('without')} extension`));
-    } else if (fileExists) {
-      console.log(chalk.red('Module already exists, try again'));
-    } else {
-      let hasJs = prompt('JS (y/n)?: ');
-      hasJs = hasJs.toLowerCase();
-      hasJs = hasJs !== 'n' && hasJs !== 'no';
-
-      if (hasJs) {
-        let isReact = prompt('React (y/n) ?: ');
-        isReact = isReact.toLowerCase();
-        isReact = isReact !== 'n' && isReact !== 'no';
-
-        if (isReact) return createReact({}, name);
-      }
-
-      createModule(name, false);
-      validName = true;
+      if (isReact) return createReact({}, name);
     }
-  }
+
+    createModule(name, false);
+  });
 }

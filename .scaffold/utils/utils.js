@@ -1,6 +1,8 @@
 const fs = require('fs-extra');
 const replace = require('replace-in-file');
 const config = require('../../config');
+const prompt = require('prompt-sync')({sigint: true});
+const validFileName = require('valid-filename');
 
 const fileNameToTitleCase = str => {
   let output = str.split("-");
@@ -29,6 +31,25 @@ const replaceStrings = async (config) => {
   }
 }
 
+const createFile = cb => {
+  let validName = false;
+
+  while (!validName) {
+    let name = prompt('File Name?: ');
+    const isValid = !name.includes('.') && !name.includes(' ') && validFileName(name);
+    const fileExists = fs.existsSync(`${config.dir.paths.srcTemplates}/${name}.hbs`)
+
+    if (!isValid) {
+      console.log(chalk.red(`Enter a ${chalk.bold('valid')} file name ${chalk.bold('without')} extension`));
+    } else if (fileExists) {
+      console.log(chalk.red('This already exists, try again'));
+    } else {
+      if (cb) cb(name);
+      validName = true;
+    }
+  }
+}
+
 const updateModules = (obj) => {
   const modulesFile = `./${config.dir.paths.srcJS}/scaffolded-modules.json`;
   fs.readFile(modulesFile, 'utf8', function(err, data) {
@@ -49,5 +70,6 @@ module.exports = {
   fileNameToTitleCase,
   fileNamtToPasCalCase,
   replaceStrings,
+  createFile,
   updateModules
 }
