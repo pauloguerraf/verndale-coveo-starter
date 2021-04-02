@@ -2,6 +2,7 @@ const fs = require('fs-extra');
 const chalk = require('chalk');
 const config = require('../../config');
 const utils = require('./utils');
+const { exec } = require('child_process');
 
 const copyJs = (dest) => {
   const src = './.scaffold/templates/module.js';
@@ -21,7 +22,10 @@ const createJs = (name, noCb = false) => {
     to: [name, utils.fileNameToTitleCase(name)],
     cb: noCb
       ? () => {}
-      : () => console.log(chalk.green(`${name} created successfully!`))
+      : () => {
+        console.log(chalk.green(`${name} created successfully!`));
+        exec(`code -g ${destJs}:6:5`);
+      }
   });
 
   utils.updateModules({

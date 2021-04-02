@@ -64,6 +64,7 @@ module.exports = function(args) {
       if (isReact) return createReact({}, name);
     }
 
+    createJs({}, name);
     createModule(name, false);
   });
 }
