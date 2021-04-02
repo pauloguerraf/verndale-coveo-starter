@@ -7,7 +7,7 @@ function {{namePascalCase}}(props) {
 
   return (
     <>
-
+      
     </>
   )
 }

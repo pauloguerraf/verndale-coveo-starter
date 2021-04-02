@@ -4,7 +4,7 @@ const validFileName = require('valid-filename');
 const config = require('../../config');
 const prompt = require('prompt-sync')({sigint: true});
 const utils = require('./utils');
-const { execSync } = require("child_process");
+const { execSync, exec } = require("child_process");
 
 const copyReact = name => {
   const folder = './.scaffold/templates/react';
@@ -62,13 +62,15 @@ const createReact = (name) => {
     execSync('yarn add @babel/preset-react -D', { stdio : 'pipe' });
     execSync('yarn add react react-dom', { stdio : 'pipe' });
     console.log(chalk.green('You can now create React modules!'));
-    exec('yarn start', { stdio : 'pipe' });
 
-    const dirJs = config.dir.paths.srcJS;
-    exec(`code -g ${dirJs}/hooks/use${utils.fileNamtToPasCalCase}.js`);
-    exec(`code -g ${dirJs}/${utils.fileNamtToPasCalCase}.js`);
+    const dirJs = `${config.dir.paths.srcJS}/modules/${name}`;
+    exec(`code -g ${dirJs}/hooks/use${utils.fileNamtToPasCalCase(name)}.js:5:7`);
+    exec(`code -g ${dirJs}/${utils.fileNamtToPasCalCase(name)}.js:10:3`);
   } catch(e) {
-    console.log(chalk.red(`ERROR: ${e.stderr}. Dependencies wre not properly installed. Try installing them manually`));
+    console.log(chalk.red(`
+      ERROR: ${e.stderr || e}
+      Dependencies wre not properly installed. Try installing them manually
+    `));
   }
 }
 
