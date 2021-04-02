@@ -84,7 +84,6 @@ const updateModules = (obj) => {
     if (err) throw err;
     modules = JSON.parse(data);
     modules.push(obj);
-    console.log(modules);
 
     const stream = fs.createWriteStream(modulesFile);
 
@@ -99,25 +98,24 @@ const updateModules = (obj) => {
 
     const stream = fs.createWriteStream(globsFile);
 
-    console.log(modules)
-
     const data = `
-      const globModules = [
-        ${modules.map(j => `{
-          name: '${j.name}',
-          loader: () => import('${j.url}'),
-          ${j.isReact ? `
-            render: function(...args) {
-              const React = require('react');
-              const { render } = require('react-dom');
-              args[1].forEach(node => render(<React.Component {...node.dataset} />, node));
-            }
-          ` : ''}
-        }`).join(',\n')}
-      ];
+/* eslint-disable */
+const globModules = [
+  ${modules.map(j => `{
+    name: '${j.name}',
+    loader: () => import('${j.url}'),
+    ${j.isReact ? `
+      render: function(...args) {
+        const React = require('react');
+        const { render } = require('react-dom');
+        args[1].forEach(node => render(<React.Component {...node.dataset} />, node));
+      }
+    ` : ''}
+  }`).join(',\n')}
+];
 
-      export default globModules;
-    `;
+export default globModules;
+`;
 
     stream.once('open', function() {
       stream.write(data);

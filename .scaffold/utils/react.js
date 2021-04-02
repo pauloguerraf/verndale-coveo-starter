@@ -7,7 +7,6 @@ const { execSync } = require("child_process");
 const copyReact = name => {
   const folder = './.scaffold/templates/react';
   const destFolder = `./${config.dir.paths.srcJS}/modules/${name}`;
-  const modulesFile = `./${config.dir.paths.srcJS}/modules/modules.js`;
   const files = [`${destFolder}/**`];
 
   fs.copySync(folder, destFolder);
@@ -18,19 +17,6 @@ const copyReact = name => {
     files,
     from: [/{{name}}/g, /{{NameTitleCase}}/g, /{{namePascalCase}}/g],
     to: [name, utils.fileNameToTitleCase(name), utils.fileNamtToPasCalCase(name)],
-    cb: () => {}
-  });
-
-  utils.replaceStrings({
-    files: modulesFile,
-    from: [
-      "// import renderReactMoule from './render-react-module';",
-      "// Render react moudule placeholder"
-    ],
-    to: [
-      "import React from 'react';",
-      "if (module.isReact) config.render = renderReactModule;"
-    ],
     cb: () => {}
   });
 }
@@ -57,33 +43,38 @@ const updateBabelToSupportReact = () => {
 const createReact = (name) => {
   copyReact(name);
 
-  console.log(chalk.yellow('Adding support for React'));
+  try {
+    require.resolve('react');
+  } catch {
+    console.log(chalk.yellow('Adding support for React'));
 
-  updateBabelToSupportReact();
+    updateBabelToSupportReact();
+
+    console.log(chalk.green('Done!'));
+    console.log(chalk.yellow('Installing basic react dependencies...'));
+
+    try {
+      execSync('yarn add @babel/preset-react -D', { stdio : 'pipe' });
+      execSync('yarn add react react-dom', { stdio : 'pipe' });
+      console.log(chalk.green('You can now create React modules!'));
+
+      const dirJs = `${config.dir.paths.srcJS}/modules/${name}`;
+      execSync(`code -g ${dirJs}/hooks/use${utils.fileNamtToPasCalCase(name)}.js:5:7`);
+      execSync(`code -g ${dirJs}/${utils.fileNamtToPasCalCase(name)}.js:10:3`);
+    } catch(e) {
+      console.log(chalk.red(`
+        ERROR: ${e.stderr || e}
+        Dependencies wre not properly installed. Try installing them manually
+      `));
+    }
+  }
+
 
   utils.updateModules({
     name,
     url: `./modules/${name}`,
     isReact: true
   });
-  console.log(chalk.green('Done!'));
-
-  console.log(chalk.yellow('Installing basic react dependencies...'));
-
-  try {
-    execSync('yarn add @babel/preset-react -D', { stdio : 'pipe' });
-    execSync('yarn add react react-dom', { stdio : 'pipe' });
-    console.log(chalk.green('You can now create React modules!'));
-
-    const dirJs = `${config.dir.paths.srcJS}/modules/${name}`;
-    execSync(`code -g ${dirJs}/hooks/use${utils.fileNamtToPasCalCase(name)}.js:5:7`);
-    execSync(`code -g ${dirJs}/${utils.fileNamtToPasCalCase(name)}.js:10:3`);
-  } catch(e) {
-    console.log(chalk.red(`
-      ERROR: ${e.stderr || e}
-      Dependencies wre not properly installed. Try installing them manually
-    `));
-  }
 }
 
 module.exports = function(args, name) {
