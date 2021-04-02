@@ -3,6 +3,7 @@ const replace = require('replace-in-file');
 const config = require('../../config');
 const prompt = require('prompt-sync')({sigint: true});
 const validFileName = require('valid-filename');
+const chalk = require('chalk');
 
 const fileNameToTitleCase = str => {
   let output = str.split("-");
@@ -31,13 +32,37 @@ const replaceStrings = async (config) => {
   }
 }
 
-const createFile = cb => {
+const createFile = (type, cb) => {
   let validName = false;
 
   while (!validName) {
     let name = prompt('File Name?: ');
+    let filePath;
+
     const isValid = !name.includes('.') && !name.includes(' ') && validFileName(name);
-    const fileExists = fs.existsSync(`${config.dir.paths.srcTemplates}/${name}.hbs`)
+
+    switch (type) {
+      case 'page':
+        filePath = `${config.dir.paths.srcTemplates}/${name}.hbs`;
+        break;
+
+      case 'module':
+        filePath = `${config.dir.paths.srcModules}/${name}.hbs`;
+        break;
+
+      case 'js':
+        filePath = `${config.dir.paths.srcJS}/modules/${name}.js`;
+        break;
+
+      case 'react':
+        filePath = `${config.dir.paths.srcJS}/modules/${name}/index.js`;
+        break;
+
+      default:
+        break;
+    }
+
+    const fileExists = fs.existsSync(filePath);
 
     if (!isValid) {
       console.log(chalk.red(`Enter a ${chalk.bold('valid')} file name ${chalk.bold('without')} extension`));

@@ -21,10 +21,10 @@ const createJs = (name, noCb = false) => {
     from: ['{{name}}', '{{NameTitleCase}}'],
     to: [name, utils.fileNameToTitleCase(name)],
     cb: noCb
-      ? () => {}
-      : () => {
-        console.log(chalk.green(`${name} created successfully!`));
+      ? () => {
         exec(`code -g ${destJs}:6:5`);
+      } : () => {
+        console.log(chalk.green(`${name} created successfully!`));
       }
   });
 
@@ -36,5 +36,5 @@ const createJs = (name, noCb = false) => {
 
 module.exports = function(args, name) {
   if (name) return createJs(name, true);
-  utils.createFile(createJs);
+  utils.createFile('js', createJs);
 }

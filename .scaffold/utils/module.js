@@ -51,7 +51,7 @@ const createModule = (name, shouldCreateJs) => {
 }
 
 module.exports = function(args) {
-  utils.createFile(name => {
+  utils.createFile('module', name => {
     let hasJs = prompt('JS (y/n)?: ');
     hasJs = hasJs.toLowerCase();
     hasJs = hasJs !== 'n' && hasJs !== 'no';

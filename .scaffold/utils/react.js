@@ -74,5 +74,5 @@ const createReact = (name) => {
 
 module.exports = function(args, name) {
   if (name) return createReact(name);
-  utils.createFile(createReact);
+  utils.createFile('react', createReact);
 }

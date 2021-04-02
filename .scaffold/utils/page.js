@@ -32,5 +32,5 @@ const createPage = name => {
 }
 
 module.exports = function(args) {
-  utils.createFile(createPage);
+  utils.createFile('page', createPage);
 }
