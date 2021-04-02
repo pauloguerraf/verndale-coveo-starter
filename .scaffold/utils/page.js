@@ -23,7 +23,7 @@ const createPage = name => {
   utils.replaceStrings({
     files: [destHtml, destStory],
     from: ['{{name}}', '{{NameTitleCase}}'],
-    to: [name, utils.fileNameToTitleCase(name)],
+    to: [/name/g, utils.fileNameToTitleCase(name)],
     cb: () => {
       console.log(chalk.green(`${name} created successfully!`))
       exec(`code -g ${destHtml}:10:5`);

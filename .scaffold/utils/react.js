@@ -58,9 +58,6 @@ const createReact = (name) => {
       execSync('yarn add react react-dom', { stdio : 'pipe' });
       console.log(chalk.green('You can now create React modules!'));
 
-      const dirJs = `${config.dir.paths.srcJS}/modules/${name}`;
-      execSync(`code -g ${dirJs}/hooks/use${utils.fileNamtToPasCalCase(name)}.js:5:7`);
-      execSync(`code -g ${dirJs}/${utils.fileNamtToPasCalCase(name)}.js:10:3`);
     } catch(e) {
       console.log(chalk.red(`
         ERROR: ${e.stderr || e}
@@ -69,12 +66,15 @@ const createReact = (name) => {
     }
   }
 
-
   utils.updateModules({
     name,
     url: `./modules/${name}`,
     isReact: true
   });
+
+  const dirJs = `${config.dir.paths.srcJS}/modules/${name}`;
+  execSync(`code -g ${dirJs}/hooks/use${utils.fileNamtToPasCalCase(name)}.js:5:7`);
+  execSync(`code -g ${dirJs}/${utils.fileNamtToPasCalCase(name)}.js:10:3`);
 }
 
 module.exports = function(args, name) {

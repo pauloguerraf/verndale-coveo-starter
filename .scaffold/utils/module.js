@@ -7,8 +7,8 @@ const createJs = require('./js');
 const createReact = require('./react');
 const { execSync } = require("child_process");
 
-const copyHTML = (dest) => {
-  const src = './.scaffold/templates/module.hbs';
+const copyHTML = (dest, isReact) => {
+  const src = isReact ? './.scaffold/templates/react-module.hbs' : './.scaffold/templates/module.hbs';
   fs.copyFileSync(src, dest, fs.constants.COPYFILE_EXCL);
 }
 
@@ -22,13 +22,13 @@ const copyStory = (dest) => {
   fs.copyFileSync(src, dest, fs.constants.COPYFILE_EXCL);
 }
 
-const createModule = (name, shouldCreateJs) => {
+const createModule = (name, shouldCreateJs, isReact) => {
   const destHtml = `./${config.dir.paths.srcModules}/${name}.hbs`;
   const destScss = `./${config.dir.paths.srcStyles}/modules/_${name}.scss`;
   const destStory = `./${config.dir.paths.storyModules}/${name}.stories.js`;
   const files = [destHtml, destStory, destScss];
 
-  copyHTML(destHtml);
+  copyHTML(destHtml, isReact);
   copyScss(destScss);
   copyStory(destStory);
 
@@ -38,7 +38,7 @@ const createModule = (name, shouldCreateJs) => {
 
   utils.replaceStrings({
     files,
-    from: ['{{name}}', '{{NameTitleCase}}', '{{jsplaceholder}}'],
+    from: [/{{name}}/g, '{{NameTitleCase}}', '{{jsplaceholder}}'],
     to: [name, utils.fileNameToTitleCase(name), dataJs],
     cb: () => {
       console.log(chalk.green(`${name} created successfully!`));
@@ -61,11 +61,11 @@ module.exports = function(args) {
 
       if (isReact) {
         createReact({}, name);
-        createModule(name, false);
+        createModule(name, false, true);
         return;
       };
     }
 
-    createModule(name, false);
+    createModule(name, false, false);
   });
 }
