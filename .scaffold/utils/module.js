@@ -1,13 +1,11 @@
 const fs = require('fs');
 const chalk = require('chalk');
-const validFileName = require('valid-filename');
 const config = require('../../config');
 const prompt = require('prompt-sync')({sigint: true});
 const utils = require('./utils');
 const createJs = require('./js');
 const createReact = require('./react');
-const { exec } = require("child_process");
-const { util } = require('webpack');
+const { execSync } = require("child_process");
 
 const copyHTML = (dest) => {
   const src = './.scaffold/templates/module.hbs';
@@ -44,8 +42,8 @@ const createModule = (name, shouldCreateJs) => {
     to: [name, utils.fileNameToTitleCase(name), dataJs],
     cb: () => {
       console.log(chalk.green(`${name} created successfully!`));
-      exec(`code -g ${destScss}:2:3`);
-      exec(`code -g ${destHtml}:2:3`);
+      execSync(`code -g ${destScss}:2:3`);
+      execSync(`code -g ${destHtml}:2:3`);
     }
   });
 }
@@ -61,7 +59,11 @@ module.exports = function(args) {
       isReact = isReact.toLowerCase();
       isReact = isReact !== 'n' && isReact !== 'no';
 
-      if (isReact) return createReact({}, name);
+      if (isReact) {
+        createReact({}, name);
+        createModule(name, false);
+        return;
+      };
     }
 
     createJs({}, name);
