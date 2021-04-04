@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import use{{namePascalCase}} from './hooks/use{{namePascalCase}}';
 
@@ -7,7 +7,7 @@ function {{namePascalCase}}(props) {
 
   return (
     <>
-      
+
     </>
   )
 }

@@ -104,13 +104,12 @@ const globModules = [
   ${modules.map(j => `{
     name: '${j.name}',
     loader: () => import('${j.url}'),
-    ${j.isReact ? `
-      render: function(...args) {
-        const React = require('react');
-        const { render } = require('react-dom');
-        args[1].forEach(node => render(React.createElement(React.Component, node.dataset), node));
-      }
-    ` : ''}
+    ${j.isReact
+    ? `render: function(Component, nodeList) {
+      const React = require('react');
+      const { render } = require('react-dom');
+      nodeList.forEach(node => render(React.createElement(Component, node.dataset), node));
+    }` : ''}
   }`).join(',\n')}
 ];
 
