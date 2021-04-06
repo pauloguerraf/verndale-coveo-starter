@@ -89,9 +89,9 @@ module.exports = {
     'arrow-parens': [2, 'as-needed'],
     // enforce spacing before and after the arrow in arrow functions
     'arrow-spacing': [2, {
-        'before': true,
-        'after': true
-      }
+      'before': true,
+      'after': true
+    }
     ],
     // require method and property shorthand syntax for object literals
     'object-shorthand': [2, 'always'],
@@ -107,13 +107,15 @@ module.exports = {
     'no-whitespace-before-property': 2,
     // disallow tabs
     'no-tabs': 2,
+    // enforce semi colons
+    'semi-style': ['error', 'last'],
     // check for indent with 2 spaces
-    "indent": [2, 2],
+    'indent': [2, 2],
     // enforce consistent spacing before and after semicolons
     'semi-spacing': [2, {
       'before': false,
-        'after': true
-      }
+      'after': true
+    }
     ],
     // enforce consistent spacing before and after keywords
     'keyword-spacing': [
@@ -140,9 +142,9 @@ module.exports = {
     ],
     // enforce consistent spacing before function definition opening parenthesis
     'space-before-function-paren': [2, {
-        'anonymous': 'never',
-        'named': 'never'
-      }
+      'anonymous': 'never',
+      'named': 'never'
+    }
     ],
     // disallow comma dangle
     'comma-dangle': [2, 'never'],
@@ -150,9 +152,9 @@ module.exports = {
     'comma-style': [2, 'last'],
     // enforce consistent spacing before and after commas
     'comma-spacing': ['error', {
-        'before': false,
-        'after': true
-      }
+      'before': false,
+      'after': true
+    }
     ],
     // enforce the consistent use of single quotes
     'quotes': [2, 'single', 'avoid-escape'],
@@ -168,14 +170,14 @@ module.exports = {
     'space-in-parens': [2, 'never'],
     // enforce consistent brace style for blocks (enforces one true brace style)
     'brace-style': [2, '1tbs', {
-        'allowSingleLine': true
-      }
+      'allowSingleLine': true
+    }
     ],
     // enforce consistent spacing inside braces
     'object-curly-spacing': [2, 'always', {
-        'objectsInObjects': true,
-        'arraysInObjects': true
-      }
+      'objectsInObjects': true,
+      'arraysInObjects': true
+    }
     ],
     // enforce consistent spacing inside computed property brackets
     'computed-property-spacing': [2, 'never'],
@@ -183,9 +185,9 @@ module.exports = {
     'block-spacing': [2, 'always'],
     // enforce let to be declared either together, enforce const to be declared separately
     'one-var': [2, {
-        'let': 'always',
-        'const': 'never'
-      }
+      'let': 'always',
+      'const': 'never'
+    }
     ],
     // disallows spaces between the function name and the opening parenthesis that calls it.
     'func-call-spacing': [2, 'never'],
@@ -193,8 +195,8 @@ module.exports = {
     'spaced-comment': 0,
     // require quotes around object literal property ass needed
     'quote-props': [2, 'as-needed', {
-        'keywords': true
-      }
+      'keywords': true
+    }
     ]
   },
 

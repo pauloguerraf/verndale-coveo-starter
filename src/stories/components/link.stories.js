@@ -30,8 +30,8 @@ export default {
           '_parent',
           '_self',
           '_top'
-        ],
-      },
+        ]
+      }
     }
   }
 };

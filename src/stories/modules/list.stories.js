@@ -7,7 +7,7 @@ export default {
       name: 'Items',
       description: 'Items that conform the list.',
       control: 'text'
-    },
+    }
   }
 };
 

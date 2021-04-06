@@ -18,7 +18,7 @@
     "version": "git add .",
     "postversion": "git push origin master --tags",
     "check-deps": "check-dependencies --install",
-    "js-lint": "eslint --fix --color --debug --ignore-path .eslintignore ./src/js/**/*.*",
+    "js-lint": "eslint --fix --color --debug --ignore-path .eslintignore ./src/js/**/*.* ./src/stories/**/*.*",
     "start": "yarn check-deps && cross-env NODE_ENV=development gulp",
     "build": "yarn js-lint && cross-env NODE_ENV=production gulp && webpack -p --env.production --progress && yarn build-storybook",
     "storybook": "start-storybook -p 6006 -s src/static/",
