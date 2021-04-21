@@ -22,11 +22,11 @@ const createPage = name => {
   copyStory(destStory);
   utils.replaceStrings({
     files: [destHtml, destStory],
-    from: ['{{name}}', '{{NameTitleCase}}'],
-    to: [/name/g, utils.fileNameToTitleCase(name)],
+    from: [/{{name}}/g, '{{NameTitleCase}}'],
+    to: [name, utils.fileNameToTitleCase(name)],
     cb: () => {
       console.log(chalk.green(`${name} created successfully!`))
-      exec(`code -g ${destHtml}:10:5`);
+      try {exec(`code -g ${destHtml}:10:5`)} catch {}
     }
   });
 }
