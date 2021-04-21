@@ -42,8 +42,10 @@ const createModule = (name, shouldCreateJs, isReact) => {
     to: [name, utils.fileNameToTitleCase(name), dataJs],
     cb: () => {
       console.log(chalk.green(`${name} created successfully!`));
-      execSync(`code -g ${destScss}:2:3`);
-      execSync(`code -g ${destHtml}:2:3`);
+      try {
+        execSync(`code -g ${destScss}:2:3`);
+        execSync(`code -g ${destHtml}:2:3`);
+      } catch {}
     }
   });
 }
@@ -64,6 +66,8 @@ module.exports = function(args) {
         createModule(name, false, true);
         return;
       };
+      createModule(name, true, false);
+      return;
     }
 
     createModule(name, false, false);

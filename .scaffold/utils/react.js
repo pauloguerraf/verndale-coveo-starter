@@ -72,8 +72,10 @@ const createReact = (name) => {
   });
 
   const dirJs = `${config.dir.paths.srcJS}/modules/${name}`;
-  execSync(`code -g ${dirJs}/hooks/use${utils.fileNamtToPasCalCase(name)}.js:5:7`);
-  execSync(`code -g ${dirJs}/${utils.fileNamtToPasCalCase(name)}.js:10:3`);
+  try {
+    execSync(`code -g ${dirJs}/hooks/use${utils.fileNamtToPasCalCase(name)}.js:5:7`);
+    execSync(`code -g ${dirJs}/${utils.fileNamtToPasCalCase(name)}.js:10:3`);
+  } catch {}
 }
 
 module.exports = function(args, name) {

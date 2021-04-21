@@ -22,7 +22,7 @@ const createJs = (name, noCb = false) => {
     to: [name, utils.fileNameToTitleCase(name)],
     cb: noCb
       ? () => {
-        exec(`code -g ${destJs}:6:5`);
+        try {exec(`code -g ${destJs}:6:5`)} catch {}
       } : () => {
         console.log(chalk.green(`${name} created successfully!`));
       }
