@@ -55,18 +55,13 @@ module.exports = {
         srcHtml: `${this.source}/${this.html}`,
         //templates
         srcTemplates: `${this.source}/${this.html}/${this.assets.htmlTemplates}`,
-        devTemplates: `${this.development}/${this.html}/${this.assets.htmlTemplates}`,
-        distTemplates: `${this.production}/${this.html}/${this.assets.htmlTemplates}`,
+        devTemplates: `${this.development}/${this.html}`,
         storyTemplates: `${this.stories}/${this.assets.htmlTemplates}`,
         //modules
         srcModules: `${this.source}/${this.html}/${this.assets.htmlModules}`,
-        devModules: `${this.development}/${this.html}/${this.assets.htmlModules}`,
-        distModules: `${this.production}/${this.html}/${this.assets.htmlModules}`,
         storyModules: `${this.stories}/${this.assets.htmlModules}`,
         //components
-        srcComponents: `${this.source}/${this.html}/${this.assets.htmlComonents}`,
-        devComponents: `${this.development}/${this.html}/${this.assets.htmlComonents}`,
-        distComponents: `${this.production}/${this.html}/${this.assets.htmlComonents}`
+        srcComponents: `${this.source}/${this.html}/${this.assets.htmlComonents}`
       };
     }
   }

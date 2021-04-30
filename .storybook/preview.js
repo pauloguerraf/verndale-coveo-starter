@@ -1,23 +1,21 @@
 import { addDecorator } from '@storybook/html';
 import create from '@verndale/core';
+import svgxhr from 'webpack-svgstore-plugin/src/helpers/svgxhr';
 import modules from '../src/js/modules';
 import '../src/scss/styles.scss';
 
+const __svg__ = {
+  path: '../src/static/images/svg-sprites/**/*.svg',
+  name: 'images/svgsheet.svg'
+};
+
+svgxhr(__svg__);
+
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-}
+  actions: { argTypesRegex: '^on[A-Z].*' }
+};
 
 addDecorator(storyFn => {
-  var ajax = new XMLHttpRequest();
-  ajax.open('GET', '/images/svgsheet.svg', true);
-  ajax.send();
-  ajax.onload = function() {
-      var div = document.createElement('div');
-      div.style.display = 'none';
-      div.innerHTML = ajax.responseText;
-      document.body.insertBefore( div, document.body.childNodes[0]);
-  }
-
   setTimeout(() => create(modules));
   return storyFn();
 });

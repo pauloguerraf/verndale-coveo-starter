@@ -33,7 +33,8 @@
   ],
   "dependencies": {
     "@verndale/color-palette": "0.1.0",
-    "@verndale/core": "1.1.3"
+    "@verndale/core": "1.1.3",
+    "webpack-svgstore-plugin": "4.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.13.14",
@@ -42,10 +43,10 @@
     "@babel/polyfill": "7.12.1",
     "@babel/preset-env": "7.13.12",
     "@babel/register": "7.13.14",
-    "@storybook/addon-a11y": "6.2.3",
-    "@storybook/addon-essentials": "6.2.3",
-    "@storybook/addon-links": "6.2.3",
-    "@storybook/html": "6.2.3",
+    "@storybook/addon-a11y": "6.2.9",
+    "@storybook/addon-essentials": "6.2.9",
+    "@storybook/addon-links": "6.2.9",
+    "@storybook/html": "6.2.9",
     "babel-eslint": "10.1.0",
     "babel-loader": "8.2.2",
     "browser-sync": "2.26.14",

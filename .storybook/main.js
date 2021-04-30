@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const globImporter = require('node-sass-glob-importer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SvgStore = require('webpack-svgstore-plugin');
 const { dir } = require('../config.js');
 
 const readHbsPartialDirectories = () => {
@@ -95,6 +96,15 @@ module.exports = {
     config.plugins.push(
       new MiniCssExtractPlugin({
         filename: 'style.css'
+      })
+    );
+
+    config.plugins.push(
+      new SvgStore({
+        svgoOptions: {
+          plugins: [{ removeViewBox: true }]
+        },
+        prefix: ''
       })
     );
 

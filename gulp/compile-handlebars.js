@@ -34,11 +34,6 @@ HTML handlebars
 --------------------------------------------------------------`)
   );
 
-  const outPages =
-    NODE_ENV === 'production'
-      ? `./${dir.paths.distTemplates}`
-      : `./${dir.paths.devTemplates}`;
-
   const files = [];
   const readModules = () => {
     const directory = `./${dir.paths.srcModules}/`;
@@ -74,7 +69,7 @@ HTML handlebars
       .pipe(gulpHandlebars({}, options))
       .pipe(regexRename(/\.hbs$/, '.html'))
       .pipe(replace(/\uFEFF/gi, '')) //cut out zero width nbsp characters the compiler adds in
-      .pipe(gulp.dest(outPages))
+      .pipe(gulp.dest(`./${dir.paths.devTemplates}`))
       .pipe(gulpIf(NODE_ENV !== 'production', browserSync.stream()));
 
     return merge(compile);
