@@ -49,7 +49,6 @@ if (NODE_ENV === 'production') {
     sass,
     svgstore,
     imagemin,
-    compileHandlebars,
     gulp.parallel(copy, cleanCss),
     enableCriticalCss ? criticalCss : cb => cb(),
     cb => {

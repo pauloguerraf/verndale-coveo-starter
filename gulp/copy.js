@@ -20,9 +20,7 @@ Copying global files
       ? `./${dir.paths.distFonts}`
       : `./${dir.paths.devFonts}`;
 
-  const outModules = `./${dir.paths.distModules}`;
-
-  let fonts, images, modules;
+  let fonts, images;
 
   //fonts
   fonts = gulp
@@ -30,8 +28,8 @@ Copying global files
     .pipe(gulp.dest(outFonts))
     .pipe(filelog('copy:fonts'));
 
+  //images
   if (NODE_ENV !== 'production') {
-    //images
     images = gulp
       .src([
         `./${dir.paths.srcImages}/**/*.*`,
@@ -39,23 +37,14 @@ Copying global files
       ])
       .pipe(gulp.dest(`./${dir.paths.devImages}/`))
       .pipe(filelog('copy:images'));
-
-    return mergeStream(fonts, images);
+  } else {
+    images = gulp
+      .src([`./${dir.paths.srcImages}/svgsheet.svg`])
+      .pipe(gulp.dest(`./${dir.paths.distImages}/`))
+      .pipe(filelog('copy:svgsheet.svg'));
   }
 
-  modules = gulp
-    .src([
-      `./${dir.paths.srcModules}/**/*.*`,
-    ])
-    .pipe(gulp.dest(outModules))
-    .pipe(filelog('copy:modules'));
-
-  images = gulp
-    .src([`./${dir.paths.srcImages}/svgsheet.svg`])
-    .pipe(gulp.dest(`./${dir.paths.distImages}/`))
-    .pipe(filelog('copy:svgsheet.svg'));
-
-  return mergeStream(fonts, images, modules);
+  return mergeStream(fonts, images);
 }
 
 export default copy;
