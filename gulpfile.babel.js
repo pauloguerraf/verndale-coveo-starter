@@ -66,3 +66,4 @@ if (NODE_ENV === 'production') {
 
 // Tasks
 gulp.task('default', main);
+gulp.task('watch', watch);
