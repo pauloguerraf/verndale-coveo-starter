@@ -82,6 +82,12 @@ To start storybook run the following at the root of the project:
 yarn storybook
 ```
 
+To start storybook in dev mode (with JS and CSS linter):
+
+```sh
+yarn start:storybook
+```
+
 ---
 
 ## Builds
