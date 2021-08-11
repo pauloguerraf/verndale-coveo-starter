@@ -15,8 +15,6 @@
     "url": "https://github.com/verndale/toolkit.git"
   },
   "scripts": {
-    "version": "git add .",
-    "postversion": "git push origin master --tags",
     "check-deps": "check-dependencies --install",
     "js-lint": "eslint --fix --color --debug --ignore-path .eslintignore ./src/js/**/*.* ./src/stories/**/*.*",
     "start": "yarn check-deps && cross-env NODE_ENV=development gulp",
@@ -36,6 +34,8 @@
   "dependencies": {
     "@verndale/color-palette": "0.1.0",
     "@verndale/core": "1.1.3",
+    "@verndale/front-end-components": "1.2.2",
+    "sass-mq": "5.0.1",
     "webpack-svgstore-plugin": "4.1.0"
   },
   "devDependencies": {

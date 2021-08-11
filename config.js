@@ -5,7 +5,7 @@ module.exports = {
       url: '',
       route: ''
     },
-    publicPath: 'js'
+    publicPath: 'Scripts'
   },
 
   //Critical Css
