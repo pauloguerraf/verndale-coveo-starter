@@ -21,12 +21,13 @@
     "build": "yarn js-lint && cross-env NODE_ENV=production gulp && webpack -p --env.production --progress && yarn build-storybook",
     "storybook": "start-storybook -p 6006 -s src/static/",
     "watch": "gulp watch",
-    "start:storybook": "concurrently \"yarn:watch\" \"yarn:storybook\"",
+    "start-storybook": "yarn watch & yarn storybook",
     "build-storybook": "build-storybook -o ./tools/component-library/ -s src/static/ --no-dll",
     "create-page": "node ./.scaffold/index page",
     "create-module": "node ./.scaffold/index module",
     "create-js": "node ./.scaffold/index js",
-    "create-react": "node ./.scaffold/index react"
+    "create-react": "node ./.scaffold/index react",
+    "mock": "nodemon server/"
   },
   "browserslist": [
     "last 2 versions"
@@ -35,6 +36,7 @@
     "@verndale/color-palette": "0.1.0",
     "@verndale/core": "1.1.3",
     "@verndale/front-end-components": "1.2.2",
+    "nanoid": "3.1.28",
     "sass-mq": "5.0.1",
     "webpack-svgstore-plugin": "4.1.0"
   },
@@ -56,6 +58,7 @@
     "check-dependencies": "1.1.0",
     "concurrently": "6.2.0",
     "core-js": "3.11.2",
+    "cors": "2.8.5",
     "critical": "2.0.1",
     "cross-env": "7.0.3",
     "css-loader": "5.2.4",
@@ -67,6 +70,7 @@
     "eslint-import-resolver-webpack": "0.12.2",
     "eslint-plugin-html": "6.1.2",
     "eslint-plugin-import": "2.22.1",
+    "express": "4.17.1",
     "friendly-errors-webpack-plugin": "1.7.0",
     "fs-extra": "9.1.0",
     "gulp": "4.0.2",
@@ -98,6 +102,7 @@
     "minimist": "1.2.5",
     "node-notifier": "8.0.1",
     "node-sass-glob-importer": "5.3.2",
+    "nodemon": "2.0.12",
     "postcss": "8.2.13",
     "postcss-loader": "4.2.0",
     "prompt-sync": "4.2.0",
@@ -107,6 +112,8 @@
     "resolve-url-loader": "3.1.3",
     "sass-loader": "10.1.0",
     "style-loader": "2.0.0",
+    "swagger-jsdoc": "6.1.0",
+    "swagger-ui-express": "4.1.6",
     "uglify-js": "3.13.5",
     "valid-filename": "3.1.0",
     "webpack": "4.43.0",
