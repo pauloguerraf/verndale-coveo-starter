@@ -8,8 +8,12 @@ export const build = (template, args, layout = 'fullscreen') => {
     docs: {
       source: {
         code: template(args)
-          .replace(/\uFEFF/gi, '')
-          .replace(/^\s*\n/gm, '')
+          .replaceAll(/\uFEFF/gi, '')
+          .replaceAll(/^\s*\n/gm, '')
+          .replaceAll('&#x3D;', '=')
+          .replaceAll('&amp;', '&')
+          .replaceAll('&lt;', '<')
+          .replaceAll('&gt;', '>')
       }
     },
     actions: { disable: true }

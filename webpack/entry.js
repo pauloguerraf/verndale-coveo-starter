@@ -1,7 +1,8 @@
-import config from '../config';
+const config = require('../config');
 
-export default () => [
+module.exports = [
   'core-js/stable',
   'regenerator-runtime/runtime',
-  `./${config.dir.paths.srcJS}/main.js`
+  `./${config.dir.paths.srcJS}/main.js`,
+  `./${config.dir.paths.srcStyles}/styles.scss`
 ];

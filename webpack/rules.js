@@ -1,25 +1,84 @@
-import { resolve } from 'path';
-import config from '../config';
+const fs = require('fs');
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const globImporter = require('node-sass-glob-importer');
+const config = require('../config');
 
 const { paths } = config.dir;
 
-export default () => {
-  return [
-    {
-      test: /\.js$/,
-      include: [resolve(__dirname, `../${paths.srcJS}`)],
-      use: {
-        loader: 'babel-loader',
+const readHbsPartialDirectories = () => {
+  const directories = [`../${paths.srcModules}/`, `../${paths.srcComponents}/`];
+
+  const readDirectory = directory => {
+    const partials = [];
+
+    const dirChildren = fs.readdirSync(path.resolve(__dirname, directory));
+
+    for (let i = 0; i < dirChildren.length; i++) {
+      const isFile = !!path.extname(directory + dirChildren[i]);
+
+      if (!isFile) partials.push(directory + dirChildren[i]);
+    }
+
+    return partials;
+  };
+
+  return directories
+    .concat(...directories.map(directory => readDirectory(directory)))
+    .map(directory => path.resolve(__dirname, directory));
+};
+
+module.exports = [
+  {
+    test: /\.js$/,
+    include: [path.resolve(__dirname, `../${paths.srcJS}`)],
+    use: {
+      loader: 'babel-loader'
+    }
+  },
+  {
+    test: /\.scss$/,
+    include: [path.resolve(__dirname, `../${paths.srcStyles}`)],
+    use: [
+      MiniCssExtractPlugin.loader,
+      {
+        loader: 'css-loader',
+        options: {
+          url: false,
+          sourceMap: true
+        }
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          postcssOptions: {
+            ident: 'postcss',
+            plugins: {
+              autoprefixer: {}
+            }
+          }
+        }
+      },
+      {
+        loader: 'sass-loader',
+        options: {
+          sassOptions: {
+            importer: globImporter()
+          }
+        }
+      }
+    ]
+  },
+  {
+    test: /\.(handlebars|hbs)$/,
+    loader: 'handlebars-loader',
+    options: {
+      helperDirs: path.resolve('handlebars'),
+      partialDirs: readHbsPartialDirectories(),
+      precompileOptions: {
+        knownHelpersOnly: false
       }
     },
-    {
-      test: /\.html$/,
-      use: [{
-        loader: 'html-loader',
-        options: {
-          minimize: true
-        }
-      }]
-    }
-  ];
-}
+    include: path.resolve(paths.srcHtml)
+  }
+];

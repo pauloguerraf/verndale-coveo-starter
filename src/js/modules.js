@@ -7,7 +7,4 @@ const modules = [
   }
 ];
 
-export default [
-  ...globModules,
-  ...modules
-];
+export default [...globModules, ...modules];

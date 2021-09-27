@@ -1,35 +1,16 @@
 //Main entry
 
-//Overrides
-$mq-breakpoints: (
-  mobile:  360px,
-  tablet:  768px,
-  tablet-landscape: 1024px,
-  desktop: 1280px,
-  module-max: 1240px,
-  wide: 1600px
-);
-
-$primary-font: "Questrial", sans-serif;
-
-
 //Core
-@import
-"core/reset",
-"core/colorpalette",
-"core/typography",
-"../../node_modules/sass-mq/mq",
-"../../node_modules/@verndale/color-palette/colors",
-"core/variables";
+@import "core/reset", "core/colorpalette", "../../node_modules/sass-mq/mq",
+  "../../node_modules/@verndale/color-palette/colors", "core/variables",
+  "core/typography", "core/global";
+
+//Reuse components
+@import "../../node_modules/@verndale/front-end-components/lib/C-FMT-1-accordions-module/styles",
+  "../../node_modules/@verndale/front-end-components/lib/button/styles";
 
 //Components
 @import "components/**/*";
 
 //Modules
 @import "modules/**/*";
-
-
-//Reuse components
-@import
-"../../node_modules/@verndale/front-end-components/lib/accordion/styles",
-"../../node_modules/@verndale/front-end-components/lib/button/styles";

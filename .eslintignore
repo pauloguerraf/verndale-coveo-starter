@@ -1,7 +1,4 @@
-/node_modules/
-/dist/
-/src/modules/templates/
-/gulp/
-/webpack/
-gulpfile.babel.js
+node_modules/
+dist/
+webpack/
 webpack.config.babel.js

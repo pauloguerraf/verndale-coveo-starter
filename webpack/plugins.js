@@ -1,26 +1,27 @@
-import webpack from 'webpack';
-import path from 'path';
-import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SvgStore = require('webpack-svgstore');
+const config = require('../config');
 
-export default ({ production }) => {
-  const { NODE_ENV } = process.env;
+const { paths } = config.dir;
 
+module.exports = ({ production }) => {
   let plugins = [
-    new webpack.DefinePlugin({
-      '__DEV__': NODE_ENV === 'development',
-      'process.env': {
-        'NODE_ENV': JSON.stringify(NODE_ENV || 'development')
-      }
+    new MiniCssExtractPlugin({
+      filename: 'css/styles.css'
     }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery'
+    new SvgStore({
+      path: path.resolve(__dirname, `../${paths.srcSvgSprites}`),
+      fileName: 'images/svgsheet.svg',
+      removeViewBox: true
     })
   ];
 
   if (production) {
-    const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+    const BundleAnalyzerPlugin =
+      require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+    const CopyPlugin = require('copy-webpack-plugin');
+    const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
     plugins = [
       ...plugins,
@@ -28,16 +29,51 @@ export default ({ production }) => {
         analyzerMode: 'static',
         openAnalyzer: false,
         reportFilename: path.resolve(__dirname, 'report.html')
+      }),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.resolve(__dirname, `../${paths.srcStatic}`),
+            to: path.resolve(
+              __dirname,
+              `../${config.dir.production}`,
+              config.publicPath
+            ),
+            filter: resourcePath => {
+              if (
+                path.dirname(resourcePath) ===
+                path.resolve(__dirname, `../${paths.srcSvgSprites}`)
+              ) {
+                return false;
+              }
+
+              return true;
+            }
+          }
+        ]
+      }),
+      new ImageMinimizerPlugin({
+        minimizerOptions: {
+          plugins: [
+            ['gifsicle', { interlaced: true }],
+            ['mozjpeg', { quality: 85, progressive: true }],
+            ['optipng', { optimizationLevel: 5 }],
+            [
+              'svgo',
+              {
+                plugins: [
+                  {
+                    name: 'removeViewBox'
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        exclude: [/svgsheet.svg/]
       })
-    ]
-  } else {
-    plugins = [
-      ...plugins,
-      new FriendlyErrorsPlugin({
-        clearConsole: false
-      })
-    ]
+    ];
   }
 
   return plugins;
-}
+};

@@ -1,0 +1,12 @@
+.container {
+  margin: 0 auto;
+  max-width: calc(100% - #{$container-padding-mobile * 2});
+
+  @include mq(desktop) {
+    max-width: calc(100% - #{$container-padding-desktop * 2});
+  }
+
+  @include mq(wide) {
+    max-width: calc(100% - #{$container-padding-wide * 2});
+  }
+}

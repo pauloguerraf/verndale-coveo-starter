@@ -6,11 +6,9 @@
 <body>
   {{> header}}
 
-  <section role="main">
-    <div class="container">
-      {{> accordion}}
-    </div>
-  </section>
+  <main>
+    {{#with accordion}}{{> accordion}}{{/with}}
+  </main>
 
   <!-- Footer -->
   {{> footer}}

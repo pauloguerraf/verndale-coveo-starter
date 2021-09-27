@@ -1,9 +1,9 @@
-import entry from './entry';
-import output from './output';
-import plugins from './plugins';
-import rules from './rules';
+const entry = require('./entry');
+const output = require('./output');
+const plugins = require('./plugins');
+const rules = require('./rules');
 
-export {
+module.exports = {
   entry,
   output,
   plugins,

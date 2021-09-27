@@ -1,6 +1,15 @@
 //Variables
+$mq-breakpoints: (
+  mobile: 360px,
+  tablet: 768px,
+  tabletLandscape: 1024px,
+  desktop: 1280px,
+  wide: 1600px
+);
+
+$primary-font: "Questrial", sans-serif;
 
 // .container class
-$container-margin: 20px;
-$container-vert-margin: 60px;
-$container-vert-margin-desktop: 110px;
+$container-padding-mobile: 20px;
+$container-padding-desktop: 80px;
+$container-padding-wide: 120px;
