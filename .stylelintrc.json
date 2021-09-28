@@ -8,7 +8,8 @@
       "keyframes",
       "media",
       "import",
-      "mixin"
+      "mixin",
+      "font-face"
     ],
     "at-rule-empty-line-before": [
       "always",
@@ -17,8 +18,8 @@
         "ignore": ["after-comment"]
       }
     ],
-    "at-rule-name-case": ["lower"],
-    "at-rule-name-space-after": ["always"],
+    "at-rule-name-case": "lower",
+    "at-rule-name-space-after": "always",
     "at-rule-no-vendor-prefix": true,
     "at-rule-semicolon-newline-after": "always",
     "block-closing-brace-empty-line-before": "never",
@@ -27,7 +28,7 @@
     "color-hex-case": "lower",
     "color-hex-length": "long",
     "color-named": "never",
-    "csstools/use-logical": ["always", { "except": ["/^border/i"] }],
+    "csstools/use-logical": "always",
     "length-zero-no-unit": true,
     "max-empty-lines": 1,
     "max-nesting-depth": 4,
