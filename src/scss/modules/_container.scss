@@ -1,28 +1,24 @@
 .container {
-  margin-left: $container-margin;
-  margin-right: $container-margin;
+  margin-inline: $container-margin;
 
   @include mq(module-max) {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1200px;
-    width: 100%;
+    inline-size: 100%;
+    margin-inline: auto;
+    max-inline-size: 1200px;
   }
 
   main > & {
-    margin-bottom: $container-vert-margin;
-    margin-top: $container-vert-margin;
+    margin-block: $container-vert-margin;
 
     @include mq(tablet-landscape) {
-      margin-bottom: $container-vert-margin-desktop;
-      margin-top: $container-vert-margin-desktop;
+      margin-block: $container-vert-margin-desktop;
     }
 
     &:first-child {
-      margin-top: 30px;
+      margin-block-start: 30px;
 
       @include mq(tablet-landscape) {
-        margin-top: 55px;
+        margin-block-start: 55px;
       }
     }
   }
