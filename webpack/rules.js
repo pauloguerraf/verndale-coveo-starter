@@ -9,22 +9,14 @@ const { paths } = config.dir;
 const readHbsPartialDirectories = () => {
   const directories = [`../${paths.srcModules}/`, `../${paths.srcComponents}/`];
 
-  const readDirectory = directory => {
-    const partials = [];
-
-    const dirChildren = fs.readdirSync(path.resolve(__dirname, directory));
-
-    for (let i = 0; i < dirChildren.length; i++) {
-      const isFile = !!path.extname(directory + dirChildren[i]);
-
-      if (!isFile) partials.push(directory + dirChildren[i]);
-    }
-
-    return partials;
-  };
+  const readdir = directory =>
+    fs
+      .readdirSync(path.resolve(__dirname, directory))
+      .map(dir => directory + dir)
+      .filter(dir => !path.extname(dir));
 
   return directories
-    .concat(...directories.map(directory => readDirectory(directory)))
+    .concat(...directories.map(directory => readdir(directory)))
     .map(directory => path.resolve(__dirname, directory));
 };
 

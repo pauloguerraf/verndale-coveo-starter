@@ -10,3 +10,16 @@
     max-width: calc(100% - #{$container-padding-wide * 2});
   }
 }
+
+*:focus:not(.focus-visible),
+*:focus:not(.focus-visible) {
+  outline: none;
+}
+
+.focus-visible {
+  outline: solid 2px color("focus");
+
+  &:-moz-focusring {
+    outline: solid 2px color("focus");
+  }
+}

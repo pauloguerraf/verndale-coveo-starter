@@ -1,3 +1,4 @@
+import 'focus-visible';
 import { addDecorator } from '@storybook/html';
 import create from '@verndale/core';
 import svgxhr from 'webpack-svgstore/dist/helpers/svgxhr';

@@ -1,9 +1,9 @@
 //Main entry
 
 //Core
-@import "core/reset", "core/colorpalette", "../../node_modules/sass-mq/mq",
+@import "core/reset", "core/colorpalette",
   "../../node_modules/@verndale/color-palette/colors", "core/variables",
-  "core/typography", "core/global";
+  "../../node_modules/sass-mq/mq.import", "core/typography", "core/global";
 
 //Reuse components
 @import "../../node_modules/@verndale/front-end-components/lib/C-FMT-1-accordions-module/styles",
