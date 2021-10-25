@@ -1,15 +1,11 @@
 import gulp from 'gulp';
-import notifier from 'node-notifier';
-import through from 'through2';
-import path from 'path';
-import gulpSassLint from 'gulp-sass-lint';
-import filelog from 'gulp-filelog';
+import gulpStylelint from 'gulp-stylelint';
 import { log, colors } from 'gulp-util';
 import config from '../config';
 
 const { dir } = config;
 
-function sassLint() {
+function styleLint() {
   log(
     colors.green.bold(`
 --------------------------------------------------------------
@@ -26,34 +22,10 @@ Running SCSS linter
       `!./${dir.paths.srcStyles}/core/vendor/**/*.scss`
     ])
     .pipe(
-      gulpSassLint({
-        configFile: './.sass-lint.yml'
+      gulpStylelint({
+        reporters: [{ formatter: 'string', console: true }]
       })
-    )
-    .pipe(gulpSassLint.format())
-    .pipe(
-      through.obj((file, encoding, cb) => {
-        if (file.sassLint.length && file.sassLint[0].warningCount) {
-          let lint = file.sassLint[0],
-            shortPath = lint.filePath
-              .split('/')
-              .slice(-3)
-              .join('/');
-
-          notifier.notify({
-            title: 'SCSS Warnings',
-            subtitle: lint.filePath,
-            sound: true,
-            message: `${lint.warningCount} warnings - ${shortPath}`,
-            wait: true,
-            file: path.join(__dirname, lint.filePath)
-          });
-        }
-        cb();
-      })
-    )
-    .pipe(gulpSassLint.failOnError())
-    .pipe(filelog('scss-lint'));
+    );
 }
 
-export default sassLint;
+export default styleLint;
