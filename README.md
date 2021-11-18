@@ -85,7 +85,7 @@ yarn storybook
 To start storybook in dev mode (with JS and CSS linter):
 
 ```sh
-yarn start:storybook
+yarn start-storybook
 ```
 
 ---
