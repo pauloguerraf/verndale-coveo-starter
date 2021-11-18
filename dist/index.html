@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home page</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Questrial"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header>Header</header>
+  <main>
+    <div class="accordion container" data-module="accordion">
+  <div class="accordion__header">
+    <h2 class="accordion__title">Accordion Heading</h2>
+    <div class="rtf accordion__description">
+      <p>Praesent dui elit, porttitor sed vulputate id, mollis sed nibh. Morbi molestie scelerisque diam, at efficitur erat auctor vitae. Proin vehicula volutpat consequat. Donec sit amet magna sed urna egestas feugiat in et nisi. Suspendisse risus dolor, maximus sit amet pharetra sed, convallis sed orci. Nulla sit amet nisi cursus, blandit ipsum vel, feugiat nisl.</p>
+    </div>
+  </div>
+  <div class="accordion__items">
+      <div class="accordion__item">
+        <button class="accordion__item-trigger" aria-expanded="true">
+          <h3 class="accordion__item-title">Accordion Tab Title</h3>
+          <span class="accordion__item-icon">
+            <svg  class="accordion__item-icon-minus">
+              <use xlink:href="#minus" />
+            </svg>
+            <svg  class="accordion__item-icon-plus">
+              <use xlink:href="#plus" />
+            </svg>
+          </span>
+        </button>
+        <div role="region" class="accordion__item-panel">
+          <div class="accordion__item-content">
+            <h4 class="accordion__item-heading">Accordion Tab Heading</h4>
+            <div class="rtf accordion__item-description">
+              <p>Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__item-trigger">
+          <h3 class="accordion__item-title">Accordion Tab With Image</h3>
+          <span class="accordion__item-icon">
+            <svg  class="accordion__item-icon-minus">
+              <use xlink:href="#minus" />
+            </svg>
+            <svg  class="accordion__item-icon-plus">
+              <use xlink:href="#plus" />
+            </svg>
+          </span>
+        </button>
+        <div role="region" class="accordion__item-panel">
+          <div class="accordion__item-content">
+            <h4 class="accordion__item-heading">Accordion Tab Heading</h4>
+            <div class="rtf accordion__item-description">
+              <p>Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.<br><img src="/images/image.jpeg" alt="Image Description" /></p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+  </main>
+  <!-- Footer -->
+  <footer>Footer</footer>
+  <!-- JavaScript -->
+  <script src="/scripts/main.bundle.js"></script>
+</body>
+</html>

@@ -20,7 +20,13 @@ module.exports = {
         ...config.module,
         rules
       },
-      plugins: [...config.plugins, ...plugins({})]
+      plugins: [
+        ...config.plugins,
+        ...plugins({}),
+        new webpack.ProvidePlugin({
+          story: 'story'
+        })
+      ]
     };
 
     // Register Template as a global module

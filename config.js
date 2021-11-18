@@ -1,5 +1,7 @@
 module.exports = {
   // Public path
+  // if set, make sure it ends with /
+  // e.g. 'assets/'
   publicPath: '',
 
   // Directory names
@@ -35,8 +37,8 @@ module.exports = {
           srcComponents: `${this.source}/${this.assets.html}/${this.assets.htmlComonents}`,
           srcModules: `${this.source}/${this.assets.html}/${this.assets.htmlModules}`,
           srcTemplates: `${this.source}/${this.assets.html}/${this.assets.htmlTemplates}`,
-          storyTemplates: `${this.stories}/${this.assets.htmlTemplates}`,
-          storyModules: `${this.stories}/${this.assets.htmlModules}`
+          storyTemplates: `${this.source}/${this.assets.stories}/${this.assets.htmlTemplates}`,
+          storyModules: `${this.source}/${this.assets.stories}/${this.assets.htmlModules}`
         };
       }
     };
