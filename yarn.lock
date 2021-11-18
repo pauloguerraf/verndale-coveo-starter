@@ -18602,10 +18602,10 @@ stylelint-order@4.1.0:
     postcss "^7.0.31"
     postcss-sorting "^5.0.1"
 
-stylelint-use-logical@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/stylelint-use-logical/-/stylelint-use-logical-1.1.0.tgz#f419386f48dae19fc59b024255c04f36738d879f"
-  integrity sha512-WwYAEoUNXxu4A9tZ+mPnvFSf3wKG9mY9+ZqnNjVHikfOQA4MTO6XeSC8BGCsY7LOG0GnDfmxMrRUJXFZRtaCmg==
+stylelint-use-logical-spec@3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/stylelint-use-logical-spec/-/stylelint-use-logical-spec-3.2.2.tgz#0f97e5fa5745ba11a59af8876c2cdca144a00fab"
+  integrity sha512-NNh1NWIEpponGnBrCQ+jdYgQRvzu0FUnDOO7ZeyPHlNKXHvRz8nvNFkU8zLUCLbpWjc92rN0G0gc0MDsjSRPMA==
 
 stylelint@13.13.1:
   version "13.13.1"
