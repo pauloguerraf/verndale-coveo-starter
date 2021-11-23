@@ -1,5 +1,5 @@
 {
-  "plugins": ["stylelint-order", "stylelint-use-logical"],
+  "plugins": ["stylelint-order", "stylelint-use-logical-spec"],
   "rules": {
     "alpha-value-notation": "number",
     "at-rule-allowed-list": [
@@ -24,12 +24,11 @@
     "at-rule-semicolon-newline-after": "always",
     "block-closing-brace-empty-line-before": "never",
     "block-no-empty": true,
-    "color-function-notation": "modern",
     "color-hex-case": "lower",
     "color-hex-length": "long",
     "color-named": "never",
-    "csstools/use-logical": "always",
     "length-zero-no-unit": true,
+    "liberty/use-logical-spec": true,
     "max-empty-lines": 1,
     "max-nesting-depth": 4,
     "no-missing-end-of-source-newline": true,
