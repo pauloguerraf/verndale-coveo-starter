@@ -16,5 +16,11 @@
       "helperPrefixes": []
     },
     "liberty/use-logical-spec": true
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.scss"],
+      "customSyntax": "postcss-scss"
+    }
+  ]
 }
