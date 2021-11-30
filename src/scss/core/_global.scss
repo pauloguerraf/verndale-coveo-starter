@@ -1,13 +1,14 @@
 .container {
   margin: 0 auto;
-  max-width: calc(100% - #{$container-padding-mobile * 2});
+  max-inline-size: $container-max-width + $container-padding-wide * 2;
+  padding-inline: $container-padding-mobile;
 
   @include mq(desktop) {
-    max-width: calc(100% - #{$container-padding-desktop * 2});
+    padding-inline: $container-padding-desktop;
   }
 
   @include mq(wide) {
-    max-width: calc(100% - #{$container-padding-wide * 2});
+    padding-inline: $container-padding-wide;
   }
 }
 

@@ -68,12 +68,6 @@ To start storybook run the following at the root of the project:
 yarn start
 ```
 
-To start storybook in dev mode (with JS and CSS linter):
-
-```sh
-yarn start:storybook
-```
-
 ---
 
 ## Scripts
@@ -95,10 +89,10 @@ The toolkit provides tools that help to generate resource files faster with a pr
 
 The following available tasks can be used:
 
-- Scaffold a new page - `create-page`
-- Scaffold a new module - `create-module`
-- Scaffold a new javascript module - `create-js`
-- Scaffold a new react module - `create-react`
+- Scaffold a new page - `yarn create-page`
+- Scaffold a new module - `yarn create-module`
+- Scaffold a new javascript module - `yarn create-js`
+- Scaffold a new react module - `yarn create-react`
 
 ---
 
