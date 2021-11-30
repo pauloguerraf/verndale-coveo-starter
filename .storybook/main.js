@@ -1,10 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
-const { dir } = require('../config.js');
+const { publicPath, dir } = require('../config.js');
 const { rules, plugins } = require('../webpack');
 
 module.exports = {
   stories: [path.resolve(dir.paths.srcStories, './**/*.stories.@(js|mdx)')],
+  staticDirs: [{ from: `../${dir.paths.srcStatic}`, to: `/${publicPath}` }],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',

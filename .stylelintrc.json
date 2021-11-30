@@ -10,6 +10,7 @@
     "selector-no-qualifying-type": null,
     "string-quotes": "double",
     "scss/selector-no-redundant-nesting-selector": null,
+    "scss/at-import-partial-extension-blacklist": null,
     "plugin/stylelint-bem-namics": {
       "patternPrefixes": [],
       "helperPrefixes": []

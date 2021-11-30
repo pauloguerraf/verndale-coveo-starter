@@ -2,7 +2,23 @@ import button from '../../html/components/picture.hbs';
 
 export default {
   title: 'Components/Picture',
-  argTypes: {}
+  argTypes: {
+    srcset: {
+      name: 'srcset',
+      control: 'object',
+      type: { required: true }
+    },
+    src: {
+      name: 'src',
+      control: 'text',
+      type: { required: true }
+    },
+    description: {
+      name: 'Alt tag',
+      control: 'text',
+      type: { required: true }
+    }
+  }
 };
 
 export const Picture = story.build(
@@ -13,7 +29,7 @@ export const Picture = story.build(
       1023: 'https://verndale-image-tools.herokuapp.com/id/Bkci_8qcdvQ?w=1023&h=500'
     },
     src: 'https://verndale-image-tools.herokuapp.com/id/Bkci_8qcdvQ?w=1280&h=500',
-    imageDescription: 'Image Description'
+    description: 'Image Description'
   },
   'padded'
 );

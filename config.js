@@ -9,12 +9,12 @@ module.exports = {
     return {
       source: 'src',
       production: 'dist',
-      static: `static/${this.publicPath}`,
 
       assets: {
         html: 'html',
         javascript: 'js',
         scss: 'scss',
+        static: `static`,
         svgSprites: 'svg-sprites',
         stories: 'stories',
         htmlTemplates: 'templates',
@@ -26,11 +26,11 @@ module.exports = {
       get paths() {
         return {
           // source
-          srcStatic: `${this.source}/${this.static}`,
+          srcStatic: `${this.source}/${this.assets.static}`,
           srcJS: `${this.source}/${this.assets.javascript}`,
           srcStyles: `${this.source}/${this.assets.scss}`,
           srcHtml: `${this.source}/${this.assets.html}`,
-          srcSvgSprites: `${this.source}/${this.static}/${this.assets.svgSprites}`,
+          srcSvgSprites: `${this.source}/${this.assets.static}/${this.assets.svgSprites}`,
           srcStories: `${this.source}/${this.assets.stories}`,
 
           // scaffold

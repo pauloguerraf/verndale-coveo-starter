@@ -2,3 +2,4 @@ node_modules/
 dist/
 webpack/
 webpack.config.babel.js
+src/js/scaffolded-modules.json
