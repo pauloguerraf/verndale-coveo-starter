@@ -20,6 +20,3 @@ $primary-font: "Questrial", sans-serif;
 
 //Modules
 @import "modules/**/*";
-
-//Reuse components
-@import "../../node_modules/@verndale/front-end-components/lib/accordion/styles", "../../node_modules/@verndale/front-end-components/lib/button/styles";
