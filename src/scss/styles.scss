@@ -13,7 +13,7 @@ $mq-breakpoints: (
 $primary-font: "Questrial", sans-serif;
 
 //Core
-@import "core/reset", "core/colorpalette", "core/typography", "../../node_modules/sass-mq/mq", "../../node_modules/@verndale/color-palette/colors", "core/variables";
+@import "core/reset", "core/colorpalette", "core/typography", "../../node_modules/sass-mq/mq", "core/variables";
 
 //Components
 @import "components/**/*";
