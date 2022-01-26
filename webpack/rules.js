@@ -20,13 +20,20 @@ const readHbsPartialDirectories = () => {
     .map(directory => path.resolve(__dirname, directory));
 };
 
-module.exports = [
+const rules = [
   {
     test: /\.js$/,
     include: [path.resolve(__dirname, `../${paths.srcJS}`)],
-    use: {
-      loader: 'babel-loader'
-    }
+    use: [
+      {
+        loader: 'esbuild-loader',
+        options: {
+          loader: 'jsx', // adds React support
+          target: 'es2020',
+          minify: true
+        }
+      }
+    ]
   },
   {
     test: /\.scss$/,
@@ -74,3 +81,5 @@ module.exports = [
     include: path.resolve(paths.srcHtml)
   }
 ];
+
+module.exports = rules;
