@@ -35,11 +35,6 @@ module.exports = {
       __dirname,
       './utils/story.js'
     );
-    webpackConfig.plugins.push(
-      new webpack.ProvidePlugin({
-        story: 'story'
-      })
-    );
 
     return webpackConfig;
   }

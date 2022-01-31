@@ -18,40 +18,40 @@ export default {
       name: 'Type',
       description:
         'Indicates if the component is of type button, submit or link.',
-      defaultValue: 'button',
       control: {
         type: 'radio',
         options: ['button', 'submit', 'link']
       },
-      type: { required: true }
+      type: { required: true },
+      table: { defaultValue: { summary: 'button' } }
     },
     className: {
       name: 'Class name',
       description: 'Indicates the styles of the button.',
-      defaultValue: 'primary',
       control: {
         type: 'radio',
         options: ['primary', 'secondary']
       },
-      type: { required: true }
+      type: { required: true },
+      table: { defaultValue: { summary: 'primary' } }
     },
     style: {
       name: 'Style',
       description: 'Indicates the styles of the button.',
-      defaultValue: 'solid',
       control: {
         type: 'radio',
         options: ['solid', 'outline']
-      }
+      },
+      table: { defaultValue: { summary: 'solid' } }
     },
     size: {
       name: 'Size',
       description: 'Indicates if the size is large or small.',
-      defaultValue: 'large',
       control: {
         type: 'radio',
         options: ['large', 'small']
-      }
+      },
+      table: { defaultValue: { summary: 'large' } }
     },
     icon: {
       name: 'Icon',
@@ -61,8 +61,8 @@ export default {
     disabled: {
       name: 'Disabled',
       description: 'Indicates if the button is disabled.',
-      defaultValue: false,
-      control: 'boolean'
+      control: 'boolean',
+      table: { defaultValue: { summary: false } }
     }
   }
 };

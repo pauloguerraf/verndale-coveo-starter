@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['airbnb-base', 'prettier'],
+  extends: ["airbnb-base", "prettier", "plugin:storybook/recommended"],
   plugins: ['prettier'],
   parserOptions: {
     ecmaVersion: 12,
@@ -13,13 +13,12 @@ module.exports = {
     'class-methods-use-this': 0,
     'consistent-return': 0,
     'no-new': 0,
-    'no-param-reassign': [2, { props: false }],
-    'no-plusplus': [
-      2,
-      {
-        allowForLoopAfterthoughts: true
-      }
-    ],
+    'no-param-reassign': [2, {
+      props: false
+    }],
+    'no-plusplus': [2, {
+      allowForLoopAfterthoughts: true
+    }],
     'no-underscore-dangle': 0
   },
   globals: {
