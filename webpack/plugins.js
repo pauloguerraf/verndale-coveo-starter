@@ -1,5 +1,4 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SvgStore = require('webpack-svgstore');
 const config = require('../config');
 
@@ -7,9 +6,6 @@ const { paths } = config.dir;
 
 module.exports = ({ production }) => {
   let plugins = [
-    new MiniCssExtractPlugin({
-      filename: 'css/styles.css'
-    }),
     new SvgStore({
       path: path.resolve(__dirname, `../${paths.srcSvgSprites}`),
       fileName: 'images/svgsheet.svg',
@@ -17,7 +13,29 @@ module.exports = ({ production }) => {
     })
   ];
 
+  if (!production) {
+    const StylesWatchPlugin = require('./utils/StylesWatchPlugin');
+    plugins = [
+      ...plugins,
+      new StylesWatchPlugin({
+        paths: ['src/scss/components/**/*.scss', 'src/scss/modules/**/*.scss'],
+        entry: 'src/scss/styles.scss'
+      })
+    ];
+
+    // const StylesWatchPlugin = require('./utils/StylesWatchPlugin');
+
+    // plugins = [
+    //   ...plugins,
+    //   new StylesWatchPlugin({
+    //     paths: ['src/scss/components/**/*.scss', 'src/scss/modules/**/*.scss'],
+    //     entryFile: 'src/scss/styles.scss'
+    //   })
+    // ];
+  }
+
   if (production) {
+    const MiniCssExtractPlugin = require('mini-css-extract-plugin');
     const BundleAnalyzerPlugin =
       require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
     const CopyPlugin = require('copy-webpack-plugin');
@@ -25,6 +43,9 @@ module.exports = ({ production }) => {
 
     plugins = [
       ...plugins,
+      new MiniCssExtractPlugin({
+        filename: 'css/styles.css'
+      }),
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         openAnalyzer: false,

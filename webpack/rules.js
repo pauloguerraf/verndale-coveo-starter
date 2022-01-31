@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const globImporter = require('node-sass-glob-importer');
 const config = require('../config');
 
 const { paths } = config.dir;
@@ -20,66 +19,65 @@ const readHbsPartialDirectories = () => {
     .map(directory => path.resolve(__dirname, directory));
 };
 
-const rules = [
-  {
-    test: /\.js$/,
-    include: [path.resolve(__dirname, `../${paths.srcJS}`)],
-    use: [
-      {
-        loader: 'esbuild-loader',
-        options: {
-          loader: 'jsx', // adds React support
-          target: 'es2020',
-          minify: true
+module.exports = ({ production }) => {
+  return [
+    {
+      test: /\.js$/,
+      include: [path.resolve(__dirname, `../${paths.srcJS}`)],
+      use: [
+        {
+          loader: 'esbuild-loader',
+          options: {
+            loader: 'jsx', // adds React support
+            target: 'es2020',
+            minify: true
+          }
         }
-      }
-    ]
-  },
-  {
-    test: /\.scss$/,
-    include: [path.resolve(__dirname, `../${paths.srcStyles}`)],
-    use: [
-      MiniCssExtractPlugin.loader,
-      {
-        loader: 'css-loader',
-        options: {
-          url: false,
-          sourceMap: true
-        }
-      },
-      {
-        loader: 'postcss-loader',
-        options: {
-          postcssOptions: {
-            ident: 'postcss',
-            plugins: {
-              autoprefixer: {}
+      ]
+    },
+    {
+      test: /\.scss$/,
+      include: [path.resolve(__dirname, `../${paths.srcStyles}`)],
+      use: [
+        production ? MiniCssExtractPlugin.loader : 'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            url: false,
+            sourceMap: true
+          }
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            postcssOptions: {
+              ident: 'postcss',
+              plugins: {
+                autoprefixer: {}
+              }
             }
           }
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
+        },
+        'webpack-import-glob-loader'
+      ]
+    },
+    {
+      test: /\.(handlebars|hbs)$/,
+      loader: 'handlebars-loader',
+      options: {
+        helperDirs: path.resolve('handlebars'),
+        partialDirs: readHbsPartialDirectories(),
+        precompileOptions: {
+          knownHelpersOnly: false
         }
       },
-      {
-        loader: 'sass-loader',
-        options: {
-          sassOptions: {
-            importer: globImporter()
-          }
-        }
-      }
-    ]
-  },
-  {
-    test: /\.(handlebars|hbs)$/,
-    loader: 'handlebars-loader',
-    options: {
-      helperDirs: path.resolve('handlebars'),
-      partialDirs: readHbsPartialDirectories(),
-      precompileOptions: {
-        knownHelpersOnly: false
-      }
-    },
-    include: path.resolve(paths.srcHtml)
-  }
-];
-
-module.exports = rules;
+      include: path.resolve(paths.srcHtml)
+    }
+  ];
+};

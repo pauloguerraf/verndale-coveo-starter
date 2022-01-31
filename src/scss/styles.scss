@@ -1,8 +1,7 @@
 //Main entry
 
 //Core
-@import "core/reset", "core/colorpalette",
-  "../../node_modules/@verndale/color-palette/colors", "core/variables",
+@import "core/reset", "core/colorpalette", "core/variables",
   "../../node_modules/sass-mq/mq.import", "core/typography", "core/global";
 
 //Reuse components
@@ -10,7 +9,7 @@
   "../../node_modules/@verndale/front-end-components/lib/button/styles";
 
 //Components
-@import "components/**/*.scss";
+@import "./components/**/*.scss";
 
 //Modules
-@import "modules/**/*.scss";
+@import "./modules/**/*.scss";

@@ -7,7 +7,7 @@ module.exports = (env = {}) => ({
   optimization,
   plugins: plugins(env),
   module: {
-    rules
+    rules: rules(env)
   },
   mode: 'production',
   performance: {

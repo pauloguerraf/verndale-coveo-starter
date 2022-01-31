@@ -18,9 +18,9 @@
 }
 
 .focus-visible {
-  outline: solid 2px color("focus");
+  outline: solid 2px var(--focus);
 
   &:-moz-focusring {
-    outline: solid 2px color("focus");
+    outline: solid 2px var(--focus);
   }
 }

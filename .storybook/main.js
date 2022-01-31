@@ -19,7 +19,7 @@ module.exports = {
       ...config,
       module: {
         ...config.module,
-        rules
+        rules: rules({})
       },
       plugins: [
         ...config.plugins,
