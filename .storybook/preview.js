@@ -1,5 +1,4 @@
 import 'focus-visible';
-import { addDecorator } from '@storybook/html';
 import create from '@verndale/core';
 import svgxhr from 'webpack-svgstore/dist/helpers/svgxhr';
 import modules from '../src/js/modules';
@@ -29,7 +28,9 @@ export const parameters = {
   viewport: { viewports }
 };
 
-addDecorator(storyFn => {
-  setTimeout(() => create(modules));
-  return storyFn();
-});
+export const decorators = [
+  storyFn => {
+    setTimeout(() => create(modules));
+    return storyFn();
+  }
+];
