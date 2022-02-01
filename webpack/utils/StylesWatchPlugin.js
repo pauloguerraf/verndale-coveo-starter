@@ -12,10 +12,14 @@ class StylesWatchPlugin {
   constructor(options = {}) {
     this.options = { ...defaults, ...options };
     this.fileDependencies = [];
+    this.firstRun = true;
   }
 
   handleAddedFile(path) {
-    if (!this.fileDependencies.find(fd => fd === resolve(path))) {
+    if (
+      !this.fileDependencies.find(fd => fd === resolve(path)) &&
+      !this.firstRun
+    ) {
       fs.readFile(this.options.entry, 'utf8', (err, data) => {
         if (err) throw err;
         fs.writeFile(this.options.entry, data, function (err) {
@@ -38,6 +42,10 @@ class StylesWatchPlugin {
     compiler.hooks.thisCompilation.tap('StylesWatchPlugin', compilation => {
       const { fileDependencies } = compilation;
       this.fileDependencies = [...fileDependencies];
+    });
+
+    compiler.hooks.done.tap('StylesWatchPlugin', () => {
+      this.firstRun = false;
     });
   }
 }
