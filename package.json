@@ -39,7 +39,7 @@
     "@verndale/front-end-components": "1.10.3",
     "check-dependencies": "1.1.0",
     "focus-visible": "5.2.0",
-    "sass-mq": "6.0.0-beta.1",
+    "sass-mq": "6.0.0",
     "webpack-svgstore": "2.0.2"
   },
   "devDependencies": {

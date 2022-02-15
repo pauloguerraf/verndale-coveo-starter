@@ -1,22 +1,6 @@
-//Variables
-$mq-breakpoints: (
-  mobile: 360px,
-  tablet: 768px,
-  tabletLandscape: 1024px,
-  desktop: 1280px,
-  wide: 1600px
-);
-
-// Uncomment the following linef you want to display the currently
-// active breakpoint in the top right corner of your site during
-// development, add the breakpoints to this list, ordered by width.
-
-//$mq-show-breakpoints: (mobile, tablet, tabletLandscape, desktop, wide);
-
-$primary-font: "Questrial", sans-serif;
-
-// .container class
-$container-max-width: 1600px;
-$container-padding-mobile: 20px;
-$container-padding-desktop: 80px;
-$container-padding-wide: 120px;
+:root {
+  --container-max-width: 1840px;
+  --container-padding-mobile: 20px;
+  --container-padding-desktop: 80px;
+  --container-padding-wide: 120px;
+}
