@@ -4,7 +4,11 @@ const { publicPath, dir } = require('../config.js');
 const { rules, plugins } = require('../webpack');
 
 module.exports = {
-  stories: [path.resolve(dir.paths.srcStories, './**/*.stories.@(js|mdx)')],
+  stories: [
+    path
+      .resolve(dir.paths.srcStories, './**/*.stories.@(js|mdx)')
+      .replace(/\\/g, '/')
+  ],
   staticDirs: [{ from: `../${dir.paths.srcStatic}`, to: `/${publicPath}` }],
   addons: [
     '@storybook/addon-links',
