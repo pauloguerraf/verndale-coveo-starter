@@ -1,6 +1,12 @@
 :root {
+  --primary-font: "Questrial", sans-serif;
   --container-max-width: 1840px;
-  --container-padding-mobile: 20px;
-  --container-padding-desktop: 80px;
-  --container-padding-wide: 120px;
+  --container-padding: 20px;
+
+  @include mq(desktop) {
+    --container-padding: 80px;
+  }
+  @include mq(wide) {
+    --container-padding: 120px;
+  }
 }

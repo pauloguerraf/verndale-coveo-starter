@@ -1,4 +1,4 @@
-import button from '../../html/components/picture.hbs';
+import picture from '../../html/components/picture.hbs';
 
 export default {
   title: 'Components/Picture',
@@ -22,7 +22,7 @@ export default {
 };
 
 export const Picture = story.build(
-  button,
+  picture,
   {
     srcset: {
       639: 'https://verndale-image-tools.herokuapp.com/id/Bkci_8qcdvQ?w=639&h=300',

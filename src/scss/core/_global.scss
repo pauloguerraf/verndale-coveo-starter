@@ -1,15 +1,7 @@
 .container {
   margin: 0 auto;
   max-inline-size: var(--container-max-width);
-  padding-inline: var(--container-padding-mobile);
-
-  @include mq(desktop) {
-    padding-inline: var(--container-padding-desktop);
-  }
-
-  @include mq(wide) {
-    padding-inline: var(--container-padding-wide);
-  }
+  padding-inline: var(--container-padding);
 }
 
 *:focus:not(.focus-visible),

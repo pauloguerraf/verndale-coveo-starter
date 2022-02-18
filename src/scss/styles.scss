@@ -18,12 +18,12 @@ $mq-breakpoints: (
 $primary-font: "Questrial", sans-serif;
 
 //Core
-@import "core/reset", "core/colorpalette", "core/variables",
-  "../../node_modules/sass-mq/mq.import", "core/typography", "core/global";
+@import "node_modules/sass-mq/mq.import", "core/reset", "core/colorpalette",
+  "core/variables", "core/typography", "core/global";
 
 //Reuse components
-@import "../../node_modules/@verndale/front-end-components/lib/C-FMT-1-accordions-module/styles",
-  "../../node_modules/@verndale/front-end-components/lib/button/styles";
+@import "node_modules/@verndale/front-end-components/lib/C-FMT-1-accordions-module/styles",
+  "node_modules/@verndale/front-end-components/lib/button/styles";
 
 //Components
 @import "./components/**/*.scss";
