@@ -22,16 +22,6 @@ module.exports = ({ production }) => {
         entry: 'src/scss/styles.scss'
       })
     ];
-
-    // const StylesWatchPlugin = require('./utils/StylesWatchPlugin');
-
-    // plugins = [
-    //   ...plugins,
-    //   new StylesWatchPlugin({
-    //     paths: ['src/scss/components/**/*.scss', 'src/scss/modules/**/*.scss'],
-    //     entryFile: 'src/scss/styles.scss'
-    //   })
-    // ];
   }
 
   if (production) {

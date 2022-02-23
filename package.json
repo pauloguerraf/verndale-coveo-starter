@@ -22,7 +22,7 @@
     "start": "start-storybook -p 6006",
     "prebuild": "yarn check-deps && yarn js-lint && yarn style-lint",
     "build": "rimraf dist && webpack --env production --progress",
-    "build-storybook": "build-storybook -o ./tools/component-library/ --no-dll",
+    "build-storybook": "build-storybook -o ./tools/component-library/",
     "pre-commit": "lint-staged",
     "prepare": "husky install",
     "create-page": "node ./.scaffold/index page",
