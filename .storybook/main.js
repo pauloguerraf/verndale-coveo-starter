@@ -26,11 +26,11 @@ module.exports = {
       ...config,
       module: {
         ...config.module,
-        rules: rules({})
+        rules: rules({ production: true })
       },
       plugins: [
         ...config.plugins,
-        ...plugins({}),
+        ...plugins({ production: true }),
         new webpack.ProvidePlugin({
           story: 'story'
         })
