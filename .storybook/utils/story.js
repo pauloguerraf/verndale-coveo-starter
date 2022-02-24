@@ -9,7 +9,7 @@ export const build = (template, args, layout = 'fullscreen') => {
     layout,
     docs: {
       source: {
-        code: template({ ...args, publicPath })
+        code: template({ ...args, showCss: true, publicPath })
           .replace(/\uFEFF/gi, '')
           .replace(/^\s*\n/gm, '')
           .replace(/&#x3D;/g, '=')
