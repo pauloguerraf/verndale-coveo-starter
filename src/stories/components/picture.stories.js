@@ -13,6 +13,16 @@ export default {
       control: 'text',
       type: { required: true }
     },
+    width: {
+      name: 'Width',
+      control: 'text',
+      type: { required: true }
+    },
+    height: {
+      name: 'Height',
+      control: 'text',
+      type: { required: true }
+    },
     description: {
       name: 'Alt tag',
       control: 'text',
@@ -29,6 +39,8 @@ export const Picture = story.build(
       1023: 'https://verndale-image-tools.herokuapp.com/id/Bkci_8qcdvQ?w=1023&h=500'
     },
     src: 'https://verndale-image-tools.herokuapp.com/id/Bkci_8qcdvQ?w=1280&h=500',
+    width: '1280px',
+    height: '500px',
     description: 'Image Description'
   },
   'padded'
