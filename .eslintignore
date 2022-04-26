@@ -1,7 +1,6 @@
-/node_modules/
-/dist/
-/src/modules/templates/
-/gulp/
-/webpack/
-gulpfile.babel.js
+node_modules/
+dist/
+server/
+webpack/
 webpack.config.babel.js
+src/js/scaffolded-modules.json

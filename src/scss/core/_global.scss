@@ -1,0 +1,18 @@
+.container {
+  margin: 0 auto;
+  max-inline-size: var(--container-max-width);
+  padding-inline: var(--container-padding);
+}
+
+*:focus:not(.focus-visible),
+*:focus:not(.focus-visible) {
+  outline: none;
+}
+
+.focus-visible {
+  outline: solid 2px var(--focus);
+
+  &:-moz-focusring {
+    outline: solid 2px var(--focus);
+  }
+}

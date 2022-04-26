@@ -1,53 +1,26 @@
 {
-  "plugins": ["stylelint-order", "stylelint-use-logical-spec"],
+  "extends": "stylelint-config-sass-guidelines",
+  "plugins": ["@namics/stylelint-bem", "stylelint-use-logical-spec"],
   "rules": {
-    "alpha-value-notation": "number",
-    "at-rule-allowed-list": [
-      "extend",
-      "include",
-      "keyframes",
-      "media",
-      "import",
-      "mixin",
-      "font-face"
+    "max-nesting-depth": [
+      3,
+      { "ignore": ["blockless-at-rules", "pseudo-classes"] }
     ],
-    "at-rule-empty-line-before": [
-      "always",
-      {
-        "except": ["blockless-after-same-name-blockless", "first-nested"],
-        "ignore": ["after-comment"]
-      }
-    ],
-    "at-rule-name-case": "lower",
-    "at-rule-name-space-after": "always",
-    "at-rule-no-vendor-prefix": true,
-    "at-rule-semicolon-newline-after": "always",
-    "block-closing-brace-empty-line-before": "never",
-    "block-no-empty": true,
-    "color-hex-case": "lower",
-    "color-hex-length": "long",
-    "color-named": "never",
-    "length-zero-no-unit": true,
-    "liberty/use-logical-spec": true,
-    "max-empty-lines": 1,
-    "max-nesting-depth": 4,
-    "no-missing-end-of-source-newline": true,
-    "number-leading-zero": "always",
-    "number-no-trailing-zeros": true,
-    "order/order": ["custom-properties", "declarations"],
-    "order/properties-alphabetical-order": true,
-    "property-case": "lower",
-    "rule-empty-line-before": [
-      "always-multi-line",
-      {
-        "except": ["first-nested"],
-        "ignore": ["after-comment"]
-      }
-    ],
-    "selector-class-pattern": "^[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(--([a-z0-9]+-?)+){0,2}$",
-    "selector-max-empty-lines": 0,
-    "selector-pseudo-class-case": "lower",
-    "shorthand-property-no-redundant-values": true,
-    "unit-case": "lower"
-  }
+    "selector-class-pattern": null,
+    "selector-no-qualifying-type": null,
+    "string-quotes": "double",
+    "scss/selector-no-redundant-nesting-selector": null,
+    "scss/at-import-partial-extension-blacklist": null,
+    "plugin/stylelint-bem-namics": {
+      "patternPrefixes": [],
+      "helperPrefixes": []
+    },
+    "liberty/use-logical-spec": true
+  },
+  "overrides": [
+    {
+      "files": ["**/*.scss"],
+      "customSyntax": "postcss-scss"
+    }
+  ]
 }

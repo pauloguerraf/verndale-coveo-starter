@@ -4,19 +4,29 @@
 $mq-breakpoints: (
   mobile: 360px,
   tablet: 768px,
-  tablet-landscape: 1024px,
+  tabletLandscape: 1024px,
   desktop: 1280px,
-  module-max: 1240px,
   wide: 1600px
 );
+
+// Uncomment the following linef you want to display the currently
+// active breakpoint in the top right corner of your site during
+// development, add the breakpoints to this list, ordered by width.
+
+//$mq-show-breakpoints: (mobile, tablet, tabletLandscape, desktop, wide);
 
 $primary-font: "Questrial", sans-serif;
 
 //Core
-@import "core/reset", "core/colorpalette", "core/typography", "../../node_modules/sass-mq/mq", "core/variables";
+@import "node_modules/sass-mq/mq.import", "core/reset", "core/colorpalette",
+  "core/variables", "core/typography", "core/global";
+
+//Reuse components
+@import "node_modules/@verndale/front-end-components/lib/C-FMT-1-accordions-module/styles",
+  "node_modules/@verndale/front-end-components/lib/button/styles";
 
 //Components
-@import "components/**/*";
+@import "./components/**/*.scss";
 
 //Modules
-@import "modules/**/*";
+@import "./modules/**/*.scss";

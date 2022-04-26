@@ -1,33 +1,36 @@
-import { addDecorator } from '@storybook/html';
+import 'focus-visible';
 import create from '@verndale/core';
+import svgxhr from 'webpack-svgstore/dist/helpers/svgxhr';
 import modules from '../src/js/modules';
 import '../src/scss/styles.scss';
 
-const svgSheet = () => `
-  <script>
-    fetch('/images/svgsheet.svg')
-      .then((blob) => blob.text())
-      .then((response) => {
-        const div = document.createElement('div')
-        div.style.display = 'none'
-        div.innerHTML = response
-        document.body.insertBefore(div, document.body.childNodes[0])
-      })
-  </script>
-`;
+svgxhr('/images/svgsheet.svg');
 
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' }
+const viewports = {
+  mobile: {
+    name: 'Mobile',
+    styles: {
+      width: '375px',
+      height: '812px'
+    }
+  },
+  tablet: {
+    name: 'Tablet',
+    styles: {
+      width: '768px',
+      height: '1024px'
+    }
+  }
 };
 
-addDecorator(storyFn => {
-  setTimeout(() => create(modules));
-  return storyFn();
-});
+export const parameters = {
+  actions: { argTypesRegex: '^on[A-Z].*' },
+  viewport: { viewports }
+};
 
 export const decorators = [
-  story => `
-  ${story()}
-  ${svgSheet()}
-`
+  storyFn => {
+    setTimeout(() => create(modules));
+    return storyFn();
+  }
 ];

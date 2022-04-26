@@ -1,11 +1,13 @@
-import entry from './entry';
-import output from './output';
-import plugins from './plugins';
-import rules from './rules';
+const entry = require('./entry');
+const output = require('./output');
+const plugins = require('./plugins');
+const rules = require('./rules');
+const optimization = require('./optimization');
 
-export {
+module.exports = {
   entry,
   output,
   plugins,
-  rules
+  rules,
+  optimization
 };

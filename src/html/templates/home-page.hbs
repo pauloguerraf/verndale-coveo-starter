@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {{> head title='Home page'}}
+  {{>head title='Home page'}}
 </head>
 <body>
-  {{> header}}
+  {{>header}}
 
-  <section role="main">
-    <div class="container">
-      home page
-    </div>
-  </section>
+  <main>
+    {{#with accordion}}{{> accordion}}{{/with}}
+  </main>
 
   <!-- Footer -->
-  {{> footer}}
+  {{>footer}}
 </body>
 </html>

@@ -1,0 +1,8 @@
+<picture{{#if className}} class="{{className}}"{{/if}}>
+  {{#with srcset}}
+  {{#each this}}
+  <source media="(max-width: {{@key}}px)" srcset="{{this}}">
+  {{/each}}
+  {{/with}}
+  <img src="{{src}}" width="{{width}}" height="{{height}}" alt="{{description}}" loading="lazy">
+</picture>

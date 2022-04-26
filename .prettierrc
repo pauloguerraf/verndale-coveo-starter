@@ -11,12 +11,6 @@
       "options": {
         "singleQuote": false
       }
-    },
-    {
-      "files": ["**/*.css", "**/*.scss"],
-      "options": {
-        "printWidth": 1000
-      }
     }
   ]
 }

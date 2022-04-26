@@ -12,7 +12,7 @@
 
 Download/install these tools/packages in order to run the toolkit locally.
 
-- [Node][node-url] - `~12.x.x`
+- [Node][node-url] - `~14.x.x`
 - [Yarn][yarn-url] - `~1.x.x`
 
 ### Install requirements
@@ -58,50 +58,41 @@ This will bring down all `dependencies` and `devDependencies` for the project th
 
 ---
 
-### Running the application
-
-The build process will run a [webpack-dev-server](https://www.npmjs.com/package/webpack-dev-server) and serve up the application and assets at [http://localhost:3000](http://localhost:3000). The build will poll for changes in any file and refresh the browser automatically upon saving the file(s).
-
-After npm finishes installing dependencies, run the following at the root of the project:
-
-```sh
-yarn start
-```
-
-Running this command will compile, by default, a `development` build and launch your primary browser automatically. You are now ready to start making changes to the JavaScript, SCSS and HTML.
-
----
-
-## Components library
+## Running the application
 
 The toolkit uses [storybook](https://storybook.js.org/) to deliver all components (and modules) within an interactive UI. Developers should write one or multiple stories per component that describe all the states a component can support.
 
 To start storybook run the following at the root of the project:
 
 ```sh
-yarn storybook
-```
-
-To start storybook in dev mode (with JS and CSS linter):
-
-```sh
-yarn start-storybook
+yarn start
 ```
 
 ---
 
-## Builds
+## Scripts
 
 When working in the development environment, you will use the `yarn start` task to view up-to-date changes while you work.
 
 For individual tasks, the following can be used:
 
-- Compile landing page template - `gulp template`
-- Compile and lint SCSS - `gulp sass`
-- Compile JavaScript documentation - `yarn docs`
 - Lint JavaScript files - `yarn js-lint`
+- Lint Styles files - `yarn style-lint`
 - Build - `yarn build`
-  _Gulp must be installed globally if you want to run the Gulp commands in the list above_
+- Build static version of storybook - `yarn build-storybook`
+
+---
+
+## Scaffolding
+
+The toolkit provides tools that help to generate resource files faster with a predefined standard structure.
+
+The following available tasks can be used:
+
+- Scaffold a new page - `yarn create-page`
+- Scaffold a new module - `yarn create-module`
+- Scaffold a new javascript module - `yarn create-js`
+- Scaffold a new react module - `yarn create-react`
 
 ---
 
@@ -152,3 +143,7 @@ The stories source code can be found under the following:
 [npm-url]: https://www.npmjs.com/
 [verndale-logo]: src/images/logo-verndale.png?raw=true 'Verndale'
 [npm-image]: https://img.shields.io/npm/v/npm.svg
+
+### Static files
+
+All static files, such as images or fonts, should be located under `src/static`. SVG files to be included in the svgstore spritesheet should be located under `src/static/svg-sprites`.

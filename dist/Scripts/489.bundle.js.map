@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://@verndale/toolkit/./src/js/modules/accordion.js"],"names":[],"mappings":"gJAEA,UAAe","file":"scripts/489.bundle.js","sourcesContent":["import { Accordion } from '@verndale/front-end-components';\n\nexport default Accordion;\n"],"sourceRoot":""}
