@@ -1,0 +1,41 @@
+<section class='coveo-search-interface' data-module="CoveoAtomicSearchInterface">
+  <atomic-search-interface>
+    <atomic-search-box></atomic-search-box>
+    <atomic-result-list>
+      <atomic-result-template>
+        <template>
+          <style>
+            .result {
+              display: flex;
+              flex-direction: column;
+            }
+
+            .result atomic-icon {
+              inline-size: 20px;
+              block-size: 20px;
+            }
+
+            .result atomic-result-link a {
+              color: cornflowerblue;
+              position: relative;
+            }
+
+            .result atomic-result-link a:hover {
+              color: cornflowerblue;
+              text-shadow: 0 0 1px currentColor;
+            }
+          </style>
+          <div class="result">
+            <atomic-icon icon="../svg-sprites/file-pdf.svg"></atomic-icon>
+            <atomic-result-section-title>
+              <atomic-result-link></atomic-result-link>
+            </atomic-result-section-title>
+            <atomic-result-section-excerpt></atomic-result-section-excerpt>
+            <atomic-result-text field="excerpt"></atomic-result-text>
+            </atomic-result-section-excerpt>
+          </div>
+        </template>
+      </atomic-result-template>
+    </atomic-result-list>
+  </atomic-search-interface>
+</section>

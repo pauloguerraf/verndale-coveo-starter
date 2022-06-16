@@ -1,0 +1,28 @@
+.coveo-headless-results {
+  margin-block-start: 50px;
+
+  a {
+    display: block;
+  }
+}
+
+.coveo-headless-search-box {
+  position: relative;
+
+  input {
+    inline-size: 100%;
+  }
+
+  ul {
+    background-color: #eee;
+    border: 1px solid #777;
+    inline-size: 100%;
+    inset-block-start: 100%;
+    inset-inline-end: 0;
+    position: absolute;
+  }
+
+  li {
+    padding: 5px 20px;
+  }
+}
