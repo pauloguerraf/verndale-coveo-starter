@@ -6,15 +6,15 @@ const Facet = ({ controller }) => {
   useEffect(() => controller.subscribe(() => setState(controller.state)), []);
 
   if (!state.values.length) {
-    return <div className="coveo-headless-search-facets">No facet values</div>;
+    return <div className="coveo-headless-search__facets">No facet values</div>;
   }
 
   return (
-    <ul className="coveo-headless-search-facets">
+    <ul className="coveo-headless-search__facets">
       <li>
         <ul>
           {state.values.map(value => (
-            <li key={value.value} className="coveo-headless-search-facet-item">
+            <li key={value.value} className="coveo-headless-search__facet-item">
               <label className="custom-checkbox">
                 <input
                   type="checkbox"

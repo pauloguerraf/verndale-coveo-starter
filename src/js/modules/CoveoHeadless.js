@@ -9,9 +9,9 @@ import {
 class CoveoHeadless extends Component {
   setupDefaults() {
     this.dom = {
-      searchBox: this.el.querySelector('.coveo-headless-search-input'),
-      searchButton: this.el.querySelector('.coveo-headless-search-btn'),
-      resultList: this.el.querySelector('.coveo-headless-search-results')
+      searchBox: this.el.querySelector('.coveo-headless-search__input'),
+      searchButton: this.el.querySelector('.coveo-headless-search__btn'),
+      resultList: this.el.querySelector('.coveo-headless-search__results')
     };
     this.init();
     this.updateResults();
@@ -60,7 +60,7 @@ class CoveoHeadless extends Component {
       excerpt.innerHTML = result.excerpt;
 
       const li = document.createElement('li');
-      li.classList.add('coveo-headless-search-result');
+      li.classList.add('coveo-headless-search__result');
       li.appendChild(link);
       li.appendChild(excerpt);
 

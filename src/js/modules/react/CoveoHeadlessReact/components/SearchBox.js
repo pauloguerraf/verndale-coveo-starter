@@ -17,14 +17,18 @@ const SearchBox = ({ controller }) => {
     if (isEnterKey(e)) controller.submit();
   };
 
+  const handleInputChange = e => {
+    controller.updateText(e.target.value);
+  };
+
   return (
     <>
-      <div className="coveo-headless-search-bar">
-        <div className="coveo-headless-search-input-container">
+      <div className="coveo-headless-search__bar">
+        <div className="coveo-headless-search__input-container">
           <input
-            className="coveo-headless-search-input"
+            className="coveo-headless-search__input"
             value={state.value}
-            onChange={e => controller.updateText(e.target.value)}
+            onChange={handleInputChange}
             onKeyDown={e => handleKeyDown(e)}
           />
           {state.suggestions?.length > 0 && (
@@ -44,7 +48,7 @@ const SearchBox = ({ controller }) => {
           )}
         </div>
         <button
-          className="coveo-headless-search-btn"
+          className="coveo-headless-search__btn"
           onClick={() => controller.submit()}
         >
           Search
@@ -55,7 +59,8 @@ const SearchBox = ({ controller }) => {
 };
 
 SearchBox.propTypes = {
-  controller: PropTypes.object.isRequired
+  controller: PropTypes.object.isRequired,
+  engine: PropTypes.object
 };
 
 export default SearchBox;
