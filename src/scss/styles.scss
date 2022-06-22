@@ -14,8 +14,7 @@ $mq-breakpoints: (
 // development, add the breakpoints to this list, ordered by width.
 
 //$mq-show-breakpoints: (mobile, tablet, tabletLandscape, desktop, wide);
-
-$primary-font: "Questrial", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 //Core
 @import "node_modules/sass-mq/mq.import", "core/reset", "core/colorpalette",

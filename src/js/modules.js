@@ -14,8 +14,12 @@ const modules = [
     loader: () => import('./modules/CoveoAtomicSearchInterface')
   },
   {
-    name: 'CoveoHeadlessSearchInterface',
-    loader: () => import('./modules/react/CoveoHeadlessSearchInterface'),
+    name: 'CoveoHeadless',
+    loader: () => import('./modules/CoveoHeadless')
+  },
+  {
+    name: 'CoveoHeadlessReact',
+    loader: () => import('./modules/react/CoveoHeadlessReact'),
     render: reactModule
   }
 ];

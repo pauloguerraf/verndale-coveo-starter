@@ -12,17 +12,18 @@ const ResultList = ({ controller }) => {
   );
 
   return (
-    <div className="coveo-headless-results ">
+    <ul className="coveo-headless-search-results">
       {state.results?.length === 0 ? (
         <div>No results</div>
       ) : (
         state.results?.map((result, i) => (
-          <a key={i} href={result.clickUri}>
-            {result.title}
-          </a>
+          <li key={i} className="coveo-headless-search-result">
+            <a href={result.clickUri}>{result.title}</a>
+            <p>{result.excerpt}</p>
+          </li>
         ))
       )}
-    </div>
+    </ul>
   );
 };
 

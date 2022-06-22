@@ -4,7 +4,8 @@ import {
 } from '@coveo/headless';
 
 const headlessEngine = buildSearchEngine({
-  configuration: getSampleSearchEngineConfiguration()
+  configuration: getSampleSearchEngineConfiguration(),
+  loggerOptions: { level: 'info' }
 });
 
 export default headlessEngine;

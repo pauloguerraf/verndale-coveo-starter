@@ -4,19 +4,20 @@ import headlessEngine from './engine';
 import SearchBox from './components/SearchBox';
 import ResultList from './components/ResultList';
 
-const CoveoHeadlessSearchInterface = () => {
+const CoveoHeadlessReact = () => {
   const options = { numberOfSuggestions: 5 };
   const searchBoxController = buildSearchBox(headlessEngine, { options });
   const resultListController = buildResultList(headlessEngine);
 
   return (
     <>
+      <h2 className="coveo-headless-heading">Coveo Headless React</h2>
       <SearchBox controller={searchBoxController} />
       <ResultList controller={resultListController} />
     </>
   );
 };
 
-CoveoHeadlessSearchInterface.propTypes = {};
+CoveoHeadlessReact.propTypes = {};
 
-export default CoveoHeadlessSearchInterface;
+export default CoveoHeadlessReact;
