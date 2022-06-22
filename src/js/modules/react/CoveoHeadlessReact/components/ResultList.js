@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 
 const ResultList = ({ controller }) => {
   const [state, setState] = useState(controller.state);
-  useEffect(
-    () =>
-      controller.subscribe(() => {
-        setState(controller.state);
-      }),
-    []
-  );
+  useEffect(() => controller.subscribe(() => setState(controller.state)), []);
 
   return (
     <ul className="coveo-headless-search-results">

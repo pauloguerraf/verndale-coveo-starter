@@ -43,7 +43,12 @@ const SearchBox = ({ controller }) => {
             </ul>
           )}
         </div>
-        <button className="coveo-headless-search-btn">Search</button>
+        <button
+          className="coveo-headless-search-btn"
+          onClick={() => controller.submit()}
+        >
+          Search
+        </button>
       </div>
     </>
   );
